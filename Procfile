@@ -1,1 +1,1 @@
-worker: target/bin/FabulandBot.bat
+worker: sh target/bin/worker.bat
