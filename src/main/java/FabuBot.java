@@ -14,9 +14,9 @@ public class FabuBot extends TelegramLongPollingBot {
         String caeGroudon = "cae groudon";
         SendMessage message = new SendMessage();
         SendPhoto photo = new SendPhoto();
+        int resultadoPpt = (int) (Math.random() * 3) + 1;
         boolean isMessage = false;
         boolean isPhoto = false;
-        int empiezaJuego = 0;
 
         if(recogWord.equalsIgnoreCase("/aggron")){
             message.setText("Triturar de inmediato");
@@ -224,13 +224,8 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("piedra") && recogWord.toLowerCase().contains("papel")
-                && (recogWord.toLowerCase().contains("tijera") || recogWord.toLowerCase().contains("tijeras")) && empiezaJuego == 0){
+                && (recogWord.toLowerCase().contains("tijera") || recogWord.toLowerCase().contains("tijeras"))){
             message.setText("Perfecto! Piedra, papel o tijeras, una, dos y tres!!");
-            empiezaJuego = 1;
-                   /* if(recogWord.toLowerCase().contains("piedra") && empiezaJuego == 1){
-                        message.setText("Papel. Vaya, has perdido.");
-                        empiezaJuego = 0;
-            }*/
             isMessage = true;
 
         }
@@ -238,6 +233,78 @@ public class FabuBot extends TelegramLongPollingBot {
         else if(recogWord.toLowerCase().contains("chiste")){
             photo.setPhoto("https://i.imgur.com/QUULMsz.jpg");
             isPhoto = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("piedra") && resultadoPpt == 1){
+            message.setText("Piedra!! Hemos empatado :/");
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("piedra") && resultadoPpt == 2){
+            message.setText("Papel!! Has perdido :O");
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("piedra") && resultadoPpt == 3){
+            message.setText("Tijeras!! Has ganado :(");
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("papel") && resultadoPpt == 1){
+            message.setText("Piedra!! Has ganado :(");
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("papel") && resultadoPpt == 2){
+            message.setText("Papel!! Hemos empatado :/");
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("papel") && resultadoPpt == 3){
+            message.setText("Tijeras!! Has perdido :O");
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("tijeras") && resultadoPpt == 1){
+            message.setText("Piedra!! Has perdido :O");
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("tijeras") && resultadoPpt == 2){
+            message.setText("Papel!! Has ganado :(");
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("tijeras") && resultadoPpt == 3){
+            message.setText("Tijeras!! Hemos empatado :/");
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("tijera") && resultadoPpt == 1){
+            message.setText("Piedra!! Has perdido :O");
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("tijera") && resultadoPpt == 2){
+            message.setText("Papel!! Has ganado :(");
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("tijera") && resultadoPpt == 3){
+            message.setText("Tijeras!! Hemos empatado :/");
+            isMessage = true;
 
         }
 
