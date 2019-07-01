@@ -314,7 +314,7 @@ public class FabuBot extends TelegramLongPollingBot {
             dameX = dameX.replaceAll("\\D+", "");
             int nX = Integer.parseInt(dameX);
             String mandarX = "";
-            if (nX < 30){
+            if (nX < 500){
                 for (int i = 0; i < nX; i++) {
                     mandarX += "x";
                 }
