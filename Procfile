@@ -1,1 +1,1 @@
-worker: target/bin/worker.bat
+worker: sh target/bin/worker
