@@ -124,14 +124,19 @@ public class FabuBot extends TelegramLongPollingBot {
                     "- Cómo funcionan los IV?\n" +
                     "- A qué hora empieza el CD\n" +
                     "- Con cuántos cae Groudon?\n" +
+                    "- Counters para Groudon\n" +
                     "- Con cuántos cae Deoxys velocidad?\n" +
+                    "- Counters para Deoxys velocidad\n" +
+                    "- Coste de polvo y caramelos\n" +
+                    "- Cómo funcionan los lucky\n" +
                     "- Entre cuántos cae una T1\n" +
                     "- Entre cuántos cae una T2\n" +
                     "- Entre cuántos cae una T3\n" +
                     "- Entre cuántos cae una T4\n" +
                     "- Qué hace daño a xxxxx (siendo xxxxx un tipo cualquiera)\n" +
                     "\n" +
-                    "Se irán actualizando (versión de prueba)");
+                    "- Paginas de utilidad\n" +
+                    "Se irán actualizando");
             isMessage = true;
         }
 
@@ -140,6 +145,16 @@ public class FabuBot extends TelegramLongPollingBot {
                             "- Cuenta chistes (por ahora sólo uno)\n" +
                             "- Dame n X (siendo n un número entre 1 y 500");
             isMessage = true;
+        }
+
+        else if(recogWord.toLowerCase().contains("paginas de utilidad")){
+            message.setText("https://pokemon.gameinfo.io/ - Para saber todas las estadísticas de los Pokémon\n" +
+                    "https://www.pokebattler.com/raids - Para hacer simulaciones de raids\n" +
+                    "https://www.reddit.com/r/TheSilphRoad/ - La información más verídica que podrás encontrar y la fuente de todos los estudios.\n" +
+                    "http://pvpoke.com/ - Simulador de PVP y mejores rankings\n" +
+                    "https://gostadium.club/pvp/iv -  Calculador de IV para PVP");
+            isMessage = true;
+
         }
 
         else if(recogWord.toLowerCase().contains("funcionan los iv")){
@@ -169,6 +184,12 @@ public class FabuBot extends TelegramLongPollingBot {
                     "Preferible siempre que haya amistad y clima a favor");
             isMessage = true;
 
+        }
+
+        else if(recogWord.toLowerCase().contains("counters para deoxys velocidad")){
+            message.setText("En clima neutro y a lvl 30 son (en este orden): \nGengar (legacy), Giratina Origen, " +
+                    "Tyranitar, Weavile, Mewtwo (bola sombra), Banette, Honchkrow, Houndoom, Absol, Pinsir.");
+            isMessage = true;
         }
 
 
@@ -314,6 +335,18 @@ public class FabuBot extends TelegramLongPollingBot {
 
         else if(recogWord.toLowerCase().contains("chiste")){
             photo.setPhoto("https://i.imgur.com/QUULMsz.jpg");
+            isPhoto = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("funcionan los lucky")){
+            photo.setPhoto("https://i.redd.it/shhffsq90uk11.png");
+            isPhoto = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("polvos y caramelos")){
+            photo.setPhoto("https://i.redd.it/he01zzlv48011.png");
             isPhoto = true;
 
         }
