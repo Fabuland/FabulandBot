@@ -206,9 +206,16 @@ public class FabuBot extends TelegramLongPollingBot {
 
 
         message.setChatId(update.getMessage().getChatId());
+        photo.setChatId(update.getMessage().getChatId());
 
         try {
             execute(message);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            execute(photo);
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
