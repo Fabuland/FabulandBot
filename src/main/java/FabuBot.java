@@ -14,18 +14,23 @@ public class FabuBot extends TelegramLongPollingBot {
         String caeGroudon = "cae groudon";
         SendMessage message = new SendMessage();
         SendPhoto photo = new SendPhoto();
+        boolean isMessage = false;
+        boolean isPhoto = false;
         int empiezaJuego = 0;
 
         if(recogWord.equalsIgnoreCase("/aggron")){
             message.setText("Triturar de inmediato");
+            isMessage = true;
         }
 
         else if(recogWord.toLowerCase().contains("mejores atacantes")){
             message.setText("Siempre Machamp");
+            isMessage = true;
         }
 
         else if(recogWord.toLowerCase().contains("mejores defensores")){
             message.setText("Siempre Blissey");
+            isMessage = true;
         }
 
         else if(recogWord.toLowerCase().contains(caeGroudon)){
@@ -33,37 +38,44 @@ public class FabuBot extends TelegramLongPollingBot {
                     "Entre 4 si hay counters al 30+\nEntre 5 con counters al 20+\n" +
                     "Entre 21 si alguno de vosotros usa Aggron\nPreferible siempre que haya amistad " +
                     "y clima a favor");
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("empieza el community")){
             message.setText("El CD es de 16:00 a 19:00");
+            isMessage = true;
         }
 
         else if(recogWord.toLowerCase().contains("empieza el cd")){
             message.setText("El CD es de 16:00 a 19:00");
+            isMessage = true;
         }
 
         else if(recogWord.toLowerCase().contains("empieza el dia de la comunidad")){
             message.setText("El CD es de 16:00 a 19:00");
+            isMessage = true;
         }
 
         else if(recogWord.toLowerCase().contains("hora es el cd")){
             message.setText("El CD es de 16:00 a 19:00");
+            isMessage = true;
         }
 
         else if(recogWord.toLowerCase().contains("hora es el commmunity")){
             message.setText("El CD es de 16:00 a 19:00");
+            isMessage = true;
         }
 
         else if(recogWord.toLowerCase().contains("hora es el dia de la comunidad")){
             message.setText("El CD es de 16:00 a 19:00");
+            isMessage = true;
             
         }
 
         else if(recogWord.toLowerCase().contains("fabu")){
             message.setText("Espero que hayas dicho algo bueno del todopoderoso Fabuland");
-
+            isMessage = true;
         }
 
         else if(recogWord.toLowerCase().contains("lista de comandos")){
@@ -75,110 +87,132 @@ public class FabuBot extends TelegramLongPollingBot {
                     "- Qué hace daño a xxxxx (siendo xxxxx un tipo cualquiera)\n" +
                     "\n" +
                     "Se irán actualizando (versión de prueba)");
+            isMessage = true;
         }
 
         else if(recogWord.toLowerCase().contains("daño a normal")){
             message.setText("Lucha");
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("daño a fuego")){
             message.setText("Agua, Tierra y Roca");
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("daño a agua")){
             message.setText("Eléctrico y Planta");
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("daño a electrico")){
             message.setText("Tierra");
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("daño a eléctrico")){
             message.setText("Tierra");
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("daño a planta")){
             message.setText("Fuego, Hielo, Veneno, Volador y Bicho");
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("daño a hielo")){
             message.setText("Fuego, Lucha, Roca y Acero");
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("daño a lucha")){
             message.setText("Volador, Psíquico y Hada");
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("daño a veneno")){
             message.setText("Tierra y Psíquico");
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("daño a tierra")){
             message.setText("Agua, Planta y Hielo");
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("daño a volador")){
             message.setText("Eléctrico, Hielo y Roca");
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("daño a psiquico")){
             message.setText("Bicho, Fantasma y Siniestro");
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("daño a psíquico")){
             message.setText("Bicho, Fantasma y Siniestro");
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("daño a bicho")){
             message.setText("Fuego, Volador y Roca");
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("daño a roca")){
             message.setText("Agua, Planta, Lucha y Tierra");
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("daño a fantasma")){
             message.setText("Fantasma y Siniestro");
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("daño a dragon")){
             message.setText("Hielo, Dragon y Hada");
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("daño a dragón")){
             message.setText("Hielo, Dragon y Hada");
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("daño a siniestro")){
             message.setText("Lucha, Bicho y Hada");
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("daño a acero")){
             message.setText("Fuego, Lucha y Tierra");
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("daño a hada")){
             message.setText("Veneno y Acero");
+            isMessage = true;
 
         }
 
@@ -186,6 +220,7 @@ public class FabuBot extends TelegramLongPollingBot {
             message.setText("Buenas! Intentaré ayudarte en la medida de lo posible, para ver " +
                     "mis comandos escribe \"Lista de comandos\" y verás los comandos que tengo " +
                     "disponible.");
+            isMessage = true;
         }
 
         else if(recogWord.toLowerCase().contains("piedra") && recogWord.toLowerCase().contains("papel")
@@ -196,28 +231,32 @@ public class FabuBot extends TelegramLongPollingBot {
                         message.setText("Papel. Vaya, has perdido.");
                         empiezaJuego = 0;
             }*/
+            isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("chiste")){
             photo.setPhoto("https://i.imgur.com/QUULMsz.jpg");
+            isPhoto = true;
 
         }
 
 
         message.setChatId(update.getMessage().getChatId());
         photo.setChatId(update.getMessage().getChatId());
-
-        try {
-            execute(message);
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
+        if(isMessage == true) {
+            try {
+                execute(message);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
         }
-
-        try {
-            execute(photo);
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
+        if(isPhoto == true) {
+            try {
+                execute(photo);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
         }
 
     }
