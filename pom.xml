@@ -10,7 +10,7 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>Fabuland</groupId>
+                <groupId>org.codehaus.mojo</groupId>
                 <artifactId>appassembler-maven-plugin</artifactId>
                 <version>1.1.1</version>
                 <configuration>
@@ -24,7 +24,10 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <phase>package</phase><goals><goal>assemble</goal></goals>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>assemble</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
