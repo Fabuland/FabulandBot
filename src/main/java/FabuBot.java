@@ -44,6 +44,35 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
+        else if(recogWord.toLowerCase().contains("cae una t4")){
+            message.setText("Para hacer una T4 actualmente hacen falta un mínimo de 2 personas. Raids como" +
+                    "Tyranitar o Absol son relativamente fáciles siendo necesarios sólo amistad y Machamps" +
+                    "al 30+. Para otras como Marowak alola 2 personas requieren de un equipo de Kyogres / Gengar " +
+                    "/ Giratina Origen al 40, amistad y clima si es posible. 3 / 4 personas si es posible para asegurar en esos casos.");
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("cae una t2")){
+            message.setText("Las T2 las puedes hacer fácilmente sólo. Usa Pokémon que le hagan daño supereficaz y puedes tirarlo con cualquier equipo.");
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("cae una t1")){
+            message.setText("Las T1 las puedes hacer fácilmente sólo. Usa Pokémon que le hagan daño supereficaz y puedes tirarlo con cualquier equipo.");
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("cae una t3")){
+            message.setText("Todas las T3 son posibles en solitario. Algunas de ellas Porygon, Raichu, Sharpedo o Scyther no requiere mucho equipo, pero" +
+                    "siempre es importante tener los counters necesarios para ellos. Raids como Claydol, Donphan, Flareon o Jolteon requieren un equipo algo" +
+                    "mejor, con counters al 35+ para asegurar. El único T3 que no se puede solear hasta el momento es Shuckle.");
+            isMessage = true;
+
+        }
+
         else if(recogWord.toLowerCase().contains("empieza el community")){
             message.setText("El CD es de 16:00 a 19:00");
             isMessage = true;
@@ -86,15 +115,19 @@ public class FabuBot extends TelegramLongPollingBot {
                     "- Mejores defensores\n" +
                     "- Cómo funcionan los IV?\n" +
                     "- A qué hora empieza el CD\n" +
-                    "- Con cuántos cae Groudon\n?" +
+                    "- Con cuántos cae Groudon?\n" +
                     "- Con cuántos cae Deoxys velocidad?\n" +
+                    "- Entre cuántos cae una T1\n" +
+                    "- Entre cuántos cae una T2\n" +
+                    "- Entre cuántos cae una T3\n" +
+                    "- Entre cuántos cae una T4\n" +
                     "- Qué hace daño a xxxxx (siendo xxxxx un tipo cualquiera)\n" +
                     "\n" +
                     "Se irán actualizando (versión de prueba)");
             isMessage = true;
         }
 
-        else if(recogWord.toLowerCase().contains("lista de comandos chorra")){
+        else if(recogWord.toLowerCase().contains("comandos chorra")){
             message.setText("- Piedra papel y tijeras\n" +
                             "- Cuenta chistes (por ahora sólo uno)\n" +
                             "- Dame n X (siendo n un número entre 1 y 500");
@@ -260,7 +293,7 @@ public class FabuBot extends TelegramLongPollingBot {
         else if(recogWord.toLowerCase().contains("/start")){
             message.setText("Buenas! Intentaré ayudarte en la medida de lo posible, para ver " +
                     "mis comandos escribe \"Lista de comandos\" y verás los comandos que tengo " +
-                    "disponible. Si prefieres funcionalidades chorras puedes escribir \"Lista de comandos chorra\"");
+                    "disponible. Si prefieres funcionalidades chorras puedes escribir \"Comandos chorra\"");
             isMessage = true;
         }
 
