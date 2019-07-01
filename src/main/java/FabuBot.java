@@ -12,6 +12,7 @@ public class FabuBot extends TelegramLongPollingBot {
         String recogWord = update.getMessage().getText();
         String caeGroudon = "cae groudon";
         SendMessage message = new SendMessage();
+        int empiezaJuego = 0;
 
         if(recogWord.equalsIgnoreCase("/aggron")){
             message.setText("Triturar de inmediato");
@@ -186,10 +187,12 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("piedra") && recogWord.toLowerCase().contains("papel")
-                && (recogWord.toLowerCase().contains("tijera")) || recogWord.toLowerCase().contains("tijeras")){
+                && (recogWord.toLowerCase().contains("tijera") || recogWord.toLowerCase().contains("tijeras")) && empiezaJuego == 0){
             message.setText("Perfecto! Piedra, papel o tijeras, una, dos y tres!!");
-                if(recogWord.toLowerCase().contains("piedra")){
+            empiezaJuego = 1;
+                if(recogWord.toLowerCase().contains("piedra") && empiezaJuego == 1){
                     message.setText("Papel. Vaya, has perdido.");
+                    empiezaJuego = 0;
             }
 
         }
