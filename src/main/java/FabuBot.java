@@ -312,11 +312,11 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
-        else if(recogWord.toLowerCase().contains("dame") && recogWord.toLowerCase().contains("x") && nX < 100){
+        else if(recogWord.toLowerCase().contains("dame") && recogWord.toLowerCase().contains("x") && nX < 30){
             for(int i = 0; i < nX; i++){
                 mandarX += "x";
             }
-            message.setText(mandarX);
+            message.setText(mandarX+"");
             isMessage = true;
         }
 
