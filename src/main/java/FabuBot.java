@@ -85,6 +85,8 @@ public class FabuBot extends TelegramLongPollingBot {
                     "- A qué hora empieza el CD\n" +
                     "- Con cuántos cae Groudon?\n" +
                     "- Qué hace daño a xxxxx (siendo xxxxx un tipo cualquiera)\n" +
+                    "- Piedra papel y tijeras\n" +
+                    "- Cuenta chistes (por ahora sólo uno)" +
                     "\n" +
                     "Se irán actualizando (versión de prueba)");
             isMessage = true;
