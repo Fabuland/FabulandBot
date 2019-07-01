@@ -44,10 +44,18 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
+        else if(recogWord.toLowerCase().contains("counters para groudon")){
+            message.setText("En clima neutro y a lvl 30 son (en este orden): \nGyarados, Mewtwo " +
+                    "(rayo hielo), Kyogre, Roserade," +
+                    "Venusaur (CD), Feraligatr. Sceptile, Weavile, Palkia, Exeggutor Al, Glaceon, Mamoswine.\n" +
+                    "Con clima soleado los de planta pasan a primer puesto.");
+            isMessage = true;
+        }
+
         else if(recogWord.toLowerCase().contains("cae una t4")){
-            message.setText("Para hacer una T4 actualmente hacen falta un mínimo de 2 personas. Raids como" +
-                    "Tyranitar o Absol son relativamente fáciles siendo necesarios sólo amistad y Machamps" +
-                    "al 30+. Para otras como Marowak alola 2 personas requieren de un equipo de Kyogres / Gengar " +
+            message.setText("Para hacer una T4 actualmente hacen falta un mínimo de 2 personas. Raids como " +
+                    "Tyranitar o Absol son relativamente fáciles siendo necesarios sólo amistad y Machamps " +
+                    "al 30+. \nPara otras como Marowak alola 2 personas requieren de un equipo de Kyogres / Gengar " +
                     "/ Giratina Origen al 40, amistad y clima si es posible. 3 / 4 personas si es posible para asegurar en esos casos.");
             isMessage = true;
 
@@ -66,8 +74,8 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("cae una t3")){
-            message.setText("Todas las T3 son posibles en solitario. Algunas de ellas Porygon, Raichu, Sharpedo o Scyther no requiere mucho equipo, pero" +
-                    "siempre es importante tener los counters necesarios para ellos. Raids como Claydol, Donphan, Flareon o Jolteon requieren un equipo algo" +
+            message.setText("Todas las T3 son posibles en solitario. Algunas de ellas como Porygon, Raichu, Sharpedo o Scyther no requiere mucho equipo, pero " +
+                    "siempre es importante tener los counters necesarios para ellos. \nRaids como Claydol, Donphan, Flareon o Jolteon requieren un equipo algo " +
                     "mejor, con counters al 35+ para asegurar. El único T3 que no se puede solear hasta el momento es Shuckle.");
             isMessage = true;
 
