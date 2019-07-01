@@ -15,10 +15,8 @@ public class FabuBot extends TelegramLongPollingBot {
         SendMessage message = new SendMessage();
         SendPhoto photo = new SendPhoto();
         String dameX = update.getMessage().getText();
-        dameX = dameX.replaceAll("\\D+","");
-        int nX = Integer.parseInt(dameX);
         int resultadoPpt = (int) (Math.random() * 3) + 1;
-        String mandarX = "";
+
         boolean isMessage = false;
         boolean isPhoto = false;
 
@@ -312,11 +310,17 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
-        else if(recogWord.toLowerCase().contains("dame") && recogWord.toLowerCase().contains("x") && nX < 30){
-            for(int i = 0; i < nX; i++){
-                mandarX += "x";
+        else if(recogWord.toLowerCase().contains("dame") && recogWord.toLowerCase().contains("x")){
+            dameX = dameX.replaceAll("\\D+", "");
+            int nX = Integer.parseInt(dameX);
+            String mandarX = "";
+            if (nX < 30){
+                for (int i = 0; i < nX; i++) {
+                    mandarX += "x";
+                }
+                message.setText(mandarX);
             }
-            message.setText(mandarX+"");
+
             isMessage = true;
         }
 
