@@ -200,7 +200,7 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("chiste")){
-            photo.setPhoto("https://i.imgur.com/GuyqDki.jpg");
+            photo.setPhoto("https://i.imgur.com/QUULMsz.jpg");
 
         }
 
