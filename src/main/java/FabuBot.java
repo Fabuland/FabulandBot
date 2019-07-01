@@ -1,5 +1,6 @@
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
@@ -12,6 +13,7 @@ public class FabuBot extends TelegramLongPollingBot {
         String recogWord = update.getMessage().getText();
         String caeGroudon = "cae groudon";
         SendMessage message = new SendMessage();
+        SendPhoto photo = new SendPhoto();
         int empiezaJuego = 0;
 
         if(recogWord.equalsIgnoreCase("/aggron")){
@@ -190,10 +192,15 @@ public class FabuBot extends TelegramLongPollingBot {
                 && (recogWord.toLowerCase().contains("tijera") || recogWord.toLowerCase().contains("tijeras")) && empiezaJuego == 0){
             message.setText("Perfecto! Piedra, papel o tijeras, una, dos y tres!!");
             empiezaJuego = 1;
-                if(recogWord.toLowerCase().contains("piedra") && empiezaJuego == 1){
-                    message.setText("Papel. Vaya, has perdido.");
-                    empiezaJuego = 0;
-            }
+                   /* if(recogWord.toLowerCase().contains("piedra") && empiezaJuego == 1){
+                        message.setText("Papel. Vaya, has perdido.");
+                        empiezaJuego = 0;
+            }*/
+
+        }
+
+        else if(recogWord.toLowerCase().contains("chiste")){
+            photo.setPhoto("https://i.imgur.com/GuyqDki.jpg");
 
         }
 
