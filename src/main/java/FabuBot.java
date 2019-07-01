@@ -184,8 +184,6 @@ public class FabuBot extends TelegramLongPollingBot {
             message.setText("Buenas! Intentaré ayudarte en la medida de lo posible, para ver " +
                     "mis comandos escribe \"Lista de comandos\" y verás los comandos que tengo " +
                     "disponible.");
-        }else {
-            message.setText("No comprendo tu comando, prueba con mi \"Lista de comandos\"");
         }
 
 
