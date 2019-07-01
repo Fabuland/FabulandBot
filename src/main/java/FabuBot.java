@@ -97,18 +97,27 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("funcionan los IV")){
-            message.setText("IV significa Valores Individuales (Individual Values), y son una mecánica que funciona como los genes de un Pokémon." +
-                    " Los IV tienen 3 categorías en Pokémon GO, al igual que las estadísticas base, Ataque, Defensa y Salud." +
-                    " Pueden variar entre 0 y 15 cada estadística, por lo que hay 16 posibilidades distintas por cada estadística " +
-                    "y un total de 4096 combinaciones de IV. \n La funcionalidad de los IV no es más que una mera suma de esos" +
-                    " valores que sacas con calculadoras como Calcy IV o Pokegenie a la estadística base de un Pokémon. \n Por poner un ejemplo," +
-                    " si el Pokémon tiene 100 de Ataque, 100 de Defensa y 100 de Salud y ves que sus IV son 15/15/15 sus estadísticas totales" +
-                    " pasan a ser 115 de Ataque, 115 de Defensa y 115 en Salud. En general, tanto por potencia del Pokémon y por coleccionismo," +
-                    " para raids y gimnasios suele interesar el 100% de IV (15/15/15) pero en casos como el PVP y sus 2 ligas con límite de PC " +
-                    "el IV idóneo ronda el 0/15/15 (variando por cada especie).");
+            message.setText("IV significa Valores Individuales (Individual Values), " +
+                    "y son una mecánica que funciona como los genes de un Pokémon. Los IV tienen 3 " +
+                    "categorías en Pokémon GO, al igual que las estadísticas base, Ataque, Defensa y Salud. " +
+                    "Pueden variar entre 0 y 15 cada estadística, por lo que hay 16 posibilidades distintas por" +
+                    " cada estadística y un total de 4096 combinaciones de IV. \n La funcionalidad de los IV " +
+                    "no es más que una mera suma de esos valores que sacas con calculadoras como Calcy IV o Pokegenie a la estadística base de un Pokémon.");
             isMessage = true;
 
         }
+
+        else if(recogWord.toLowerCase().contains("cae Deoxys velocidad")){
+            message.setText("Entre 2 si hay amistad 4, Gengars/Giratina Origen y clima a favor \n" +
+                    "Entre 3 si hay counters al 35+ \n" +
+                    "Entre 3 si hay muy buenos counters al 30+ con amistad \n" +
+                    "Entre 4 si hay counters al 25+/20+ \n" +
+                    "\n" +
+                    "Preferible siempre que haya amistad y clima a favor");
+            isMessage = true;
+
+        }
+
 
         else if(recogWord.toLowerCase().contains("daño a normal")){
             message.setText("Lucha");
