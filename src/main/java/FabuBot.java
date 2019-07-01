@@ -84,15 +84,20 @@ public class FabuBot extends TelegramLongPollingBot {
             message.setText("Mis comandos disponibles son:\n" +
                     "- Mejores atacantes\n" +
                     "- Mejores defensores\n" +
+                    "- Cómo funcionan los IV?\n" +
                     "- A qué hora empieza el CD\n" +
-                    "- Con cuántos cae Groudon?\n" +
+                    "- Con cuántos cae Groudon\n?" +
+                    "- Con cuántos cae Deoxys velocidad?\n" +
                     "- Qué hace daño a xxxxx (siendo xxxxx un tipo cualquiera)\n" +
-                    "- Cómo funcionan los IV?" +
-                    "- Piedra papel y tijeras\n" +
-                    "- Cuenta chistes (por ahora sólo uno)\n" +
-                    "- Dame n X (siendo n un número entre 1 y 500\n" +
                     "\n" +
                     "Se irán actualizando (versión de prueba)");
+            isMessage = true;
+        }
+
+        else if(recogWord.toLowerCase().contains("lista de comandos chorra")){
+            message.setText("- Piedra papel y tijeras\n" +
+                            "- Cuenta chistes (por ahora sólo uno)\n" +
+                            "- Dame n X (siendo n un número entre 1 y 500");
             isMessage = true;
         }
 
@@ -102,9 +107,9 @@ public class FabuBot extends TelegramLongPollingBot {
                     " Los IV tienen 3 categorías en Pokémon GO, al igual que las estadísticas " +
                     "base, Ataque, Defensa y Salud. Pueden variar entre 0 y 15 cada estadística," +
                     " por lo que hay 16 posibilidades distintas por cada estadística y un total de" +
-                    " 4096 combinaciones de IV. \n La funcionalidad de los IV no es más que una" +
+                    " 4096 combinaciones de IV. \n\nLa funcionalidad de los IV no es más que una" +
                     " mera suma de esos valores que sacas con calculadoras como Calcy IV o Pokegenie" +
-                    " a la estadística base de un Pokémon. \n Por poner un ejemplo, si el Pokémon" +
+                    " a la estadística base de un Pokémon. \n\nPor poner un ejemplo, si el Pokémon" +
                     " tiene 100 de Ataque, 100 de Defensa y 100 de Salud y ves que sus IV son 15/15/15 " +
                     "sus estadísticas totales pasan a ser 115 de Ataque, 115 de Defensa y 115 en Salud." +
                     " En general, tanto por potencia del Pokémon y por coleccionismo, para raids y" +
@@ -118,7 +123,7 @@ public class FabuBot extends TelegramLongPollingBot {
             message.setText("Entre 2 si hay amistad 4, Gengars/Giratina Origen y clima a favor \n" +
                     "Entre 3 si hay counters al 35+ \n" +
                     "Entre 3 si hay muy buenos counters al 30+ con amistad \n" +
-                    "Entre 4 si hay counters al 25+/20+ \n" +
+                    "Entre 4 si hay counters al 25+ / 20+ \n" +
                     "\n" +
                     "Preferible siempre que haya amistad y clima a favor");
             isMessage = true;
@@ -255,7 +260,7 @@ public class FabuBot extends TelegramLongPollingBot {
         else if(recogWord.toLowerCase().contains("/start")){
             message.setText("Buenas! Intentaré ayudarte en la medida de lo posible, para ver " +
                     "mis comandos escribe \"Lista de comandos\" y verás los comandos que tengo " +
-                    "disponible.");
+                    "disponible. Si prefieres funcionalidades chorras puedes escribir \"Lista de comandos chorra\"");
             isMessage = true;
         }
 
