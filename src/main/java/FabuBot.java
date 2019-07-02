@@ -370,9 +370,32 @@ public class FabuBot extends TelegramLongPollingBot {
 
         else if(recogWord.toLowerCase().contains("añadir pokemon inter:")){
             message.setText(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1) + " añadido");
+            escribirPokemon(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1));
+
             isMessage = true;
 
         }
+
+        else if(recogWord.toLowerCase().contains("eliminar pokemon inter:")){
+            message.setText(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1) + " eliminado");
+            try {
+                eliminaPokemon(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("muestra lista pokemon inter")){
+            message.setText(readerLista("Intercambios.txt"));
+
+            isMessage = true;
+
+        }
+
+
 
         else if(recogWord.toLowerCase().contains("funcionan los lucky")){
             photo.setPhoto("https://i.redd.it/shhffsq90uk11.png");
@@ -502,7 +525,6 @@ public class FabuBot extends TelegramLongPollingBot {
         String ruta = "src/main/java/"+ archivo +"";
         File fichero = new File(ruta);
         String cont = "";
-
         try {
             Scanner reader = new Scanner(fichero);
             cont = reader.nextLine();
@@ -512,6 +534,25 @@ public class FabuBot extends TelegramLongPollingBot {
 
         return cont;
 
+    }
+
+    public String readerLista(String archivo){
+        String ruta = "src/main/java/"+ archivo +"";
+        File fichero = new File(ruta);
+        String lista = "";
+        Scanner reader = null;
+
+        try {
+            reader = new Scanner(fichero);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        while(reader.hasNextLine()){
+            lista += reader.nextLine() + "\n";
+        }
+
+        return lista;
     }
 
     public static void writer(String archivo) {
@@ -548,12 +589,12 @@ public class FabuBot extends TelegramLongPollingBot {
         }
     }
 
-    public static void escribirPokemon(String archivo, boolean verdad, String texto) {
-        String ruta = "src/main/java/"+ archivo +"";
+    public static void escribirPokemon(String texto) {
+        String ruta = "src/main/java/Intercambios.txt";
 
         FileWriter writer = null;
         try {
-            writer = new FileWriter(ruta, verdad);
+            writer = new FileWriter(ruta, true);
         } catch (IOException e) {
             e.printStackTrace();
         }
