@@ -408,10 +408,11 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("muestra lista pokemon inter")){
+            message.setText(readerLista("Intercambios.txt"));
+            
             if(vacio == true){
                 message.setText("Lista vacía.");
             }
-            message.setText(readerLista("Intercambios.txt"));
             isMessage = true;
 
         }
