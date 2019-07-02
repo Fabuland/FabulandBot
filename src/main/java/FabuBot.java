@@ -8,6 +8,11 @@ import java.io.*;
 import java.util.Scanner;
 
 public class FabuBot extends TelegramLongPollingBot {
+
+    boolean vacio;
+    int n = 1;
+    boolean borrado;
+
     public void onUpdateReceived(Update update) {
 
         System.out.println(update.getMessage().getText());
@@ -368,7 +373,7 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
-        else if(recogWord.toLowerCase().contains("añadir pokemon inter:")){
+        else if(recogWord.toLowerCase().contains("añadir pokemon inter: ")){
             message.setText(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1) + " añadido");
             escribirPokemon(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1));
 
@@ -376,8 +381,12 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
-        else if(recogWord.toLowerCase().contains("eliminar pokemon inter:")){
-            message.setText(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1) + " eliminado");
+        else if(recogWord.toLowerCase().contains("eliminar pokemon inter: ")){
+            if(borrado == true) {
+                message.setText(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1) + " eliminado");
+            }else{
+                message.setText("El Pokémon no está en la lista.");
+            }
             try {
                 eliminaPokemon(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1));
             } catch (IOException e) {
@@ -388,9 +397,18 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
-        else if(recogWord.toLowerCase().contains("muestra lista pokemon inter")){
-            message.setText(readerLista("Intercambios.txt"));
+        else if(recogWord.toLowerCase().contains("probar variables")){
+            n++;
+            message.setText(n+"");
+            isMessage = true;
 
+        }
+
+        else if(recogWord.toLowerCase().contains("muestra lista pokemon inter")){
+            if(vacio == true){
+                message.setText("Lista vacía.");
+            }
+            message.setText(readerLista("Intercambios.txt"));
             isMessage = true;
 
         }
@@ -541,7 +559,7 @@ public class FabuBot extends TelegramLongPollingBot {
         File fichero = new File(ruta);
         String lista = "";
         Scanner reader = null;
-
+        int contLineas = 0;
         try {
             reader = new Scanner(fichero);
         } catch (FileNotFoundException e) {
@@ -550,12 +568,19 @@ public class FabuBot extends TelegramLongPollingBot {
 
         while(reader.hasNextLine()){
             lista += reader.nextLine() + "\n";
+            contLineas++;
+        }
+
+        if(contLineas == 0){
+            vacio = true;
+        }else{
+            vacio = false;
         }
 
         return lista;
     }
 
-    public static void writer(String archivo) {
+    public void writer(String archivo) {
         String ruta = "src/main/java/"+ archivo +"";
         File fichero = new File(ruta);
         String cont = "";
@@ -589,7 +614,7 @@ public class FabuBot extends TelegramLongPollingBot {
         }
     }
 
-    public static void escribirPokemon(String texto) {
+    public void escribirPokemon(String texto) {
         String ruta = "src/main/java/Intercambios.txt";
 
         FileWriter writer = null;
@@ -615,7 +640,7 @@ public class FabuBot extends TelegramLongPollingBot {
         }
     }
 
-    public static void eliminaPokemon(String texto) throws IOException{
+    public void eliminaPokemon(String texto) throws IOException{
         File inputFile = new File("src/main/java/Intercambios.txt");
         File tempFile = new File("src/main/java/myTempFile.txt");
 
@@ -629,6 +654,8 @@ public class FabuBot extends TelegramLongPollingBot {
             String trimmedLine = currentLine.trim();
             if(!trimmedLine.equals(lineToRemove)) {
                 writer.write(currentLine + System.getProperty("line.separator"));
+            }else{
+                borrado = true;
             }
         }
         writer.close();
