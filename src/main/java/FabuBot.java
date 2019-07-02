@@ -4,10 +4,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 public class FabuBot extends TelegramLongPollingBot {
@@ -32,19 +29,19 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("en qué piensas fabubot")){
-            message.setText(" ▒▒▒▒▒▒▒▒▄▄▄▄▄▄▄▄▒▒▒▒▒▒▒▒ \n" +
-                    "▒▒▒▒▒▄█▀▀░░░░░░▀▀█▄▒▒▒▒▒ \n" +
-                    "▒▒▒▄█▀▄██▄░░░░░░░░▀█▄▒▒▒ \n" +
-                    "▒▒█▀░▀░░▄▀░░░░▄▀▀▀▀░▀█▒▒ \n" +
-                    "▒█▀░░░░███░░░░▄█▄░░░░▀█▒ \n" +
-                    "▒█░░░░░░▀░░░░░▀█▀░░░░░█▒ \n" +
-                    "▒█░░░░░░░░░░░░░░░░░░░░█▒ \n" +
-                    "▒█░░██▄░░▀▀▀▀▄▄░░░░░░░█▒ \n" +
-                    "▒▀█░█░█░░░▄▄▄▄▄░░░░░░█▀▒ \n" +
-                    "▒▒▀█▀░▀▀▀▀░▄▄▄▀░░░░▄█▀▒▒ \n" +
-                    "▒▒▒█░░░░░░▀█░░░░░▄█▀▒▒▒▒ \n" +
-                    "▒▒▒█▄░░░░░▀█▄▄▄█▀▀▒▒▒▒▒▒ \n" +
-                    "▒▒▒▒▀▀▀▀▀▀▀▒▒▒▒▒▒▒▒▒▒▒▒▒");
+            message.setText(" ▒▒▒▒▒▒▒▒▄▄▄▄▄▄▄▄▒▒▒▒▒▒▒ \n" +
+                    "▒▒▒▒▒▄█▀▀░░░░░░▀▀█▄▒▒▒▒ \n" +
+                    "▒▒▒▄█▀▄██▄░░░░░░░░▀█▄▒▒ \n" +
+                    "▒▒█▀░▀░░▄▀░░░░▄▀▀▀▀░▀█▒ \n" +
+                    "▒█▀░░░░███░░░░▄█▄░░░░▀█ \n" +
+                    "▒█░░░░░░▀░░░░░▀█▀░░░░░█ \n" +
+                    "▒█░░░░░░░░░░░░░░░░░░░░█ \n" +
+                    "▒█░░██▄░░▀▀▀▀▄▄░░░░░░░█ \n" +
+                    "▒▀█░█░█░░░▄▄▄▄▄░░░░░░█▀ \n" +
+                    "▒▒▀█▀░▀▀▀▀░▄▄▄▀░░░░▄█▀▒ \n" +
+                    "▒▒▒█░░░░░░▀█░░░░░▄█▀▒▒▒ \n" +
+                    "▒▒▒█▄░░░░░▀█▄▄▄█▀▀▒▒▒▒▒ \n" +
+                    "▒▒▒▒▀▀▀▀▀▀▀▒▒▒▒▒▒▒▒▒▒▒▒");
             isMessage = true;
 
         }
@@ -165,7 +162,8 @@ public class FabuBot extends TelegramLongPollingBot {
             message.setText("- Piedra papel y tijeras\n" +
                             "- Cuenta chistes (por ahora sólo uno)\n" +
                             "- Dame n X (siendo n un número entre 1 y 500\n" +
-                            "- En qué piensas fabubot?");
+                            "- En qué piensas fabubot?\n" +
+                            "- Aggron");
             isMessage = true;
         }
 
@@ -370,6 +368,12 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
+        else if(recogWord.toLowerCase().contains("añadir pokemon inter:")){
+            message.setText(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1) + " añadido");
+            isMessage = true;
+
+        }
+
         else if(recogWord.toLowerCase().contains("funcionan los lucky")){
             photo.setPhoto("https://i.redd.it/shhffsq90uk11.png");
             isPhoto = true;
@@ -466,10 +470,10 @@ public class FabuBot extends TelegramLongPollingBot {
             isMessage = true;
         }
 
-        else if(recogWord.toLowerCase().contains("fabu")){
+        /*else if(recogWord.toLowerCase().contains("fabu")){
             message.setText("Espero que hayas dicho algo bueno del todopoderoso Fabuland");
             isMessage = true;
-        }
+        }*/
 
 
         message.setChatId(update.getMessage().getChatId());
@@ -490,6 +494,8 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
     }
+
+
 
     public String reader(String archivo){
 
@@ -540,6 +546,61 @@ public class FabuBot extends TelegramLongPollingBot {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void escribirPokemon(String archivo, boolean verdad, String texto) {
+        String ruta = "src/main/java/"+ archivo +"";
+
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(ruta, verdad);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            writer.write(texto);
+            writer.write(System.lineSeparator());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(texto);
+
+        try {
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void eliminaPokemon(String texto) throws IOException{
+        File inputFile = new File("C:\\Users\\carlo\\IdeaProjects\\PruebasBot\\src\\main\\java\\Intercambios.txt");
+        File tempFile = new File("C:\\Users\\carlo\\IdeaProjects\\PruebasBot\\src\\main\\java\\myTempFile.txt");
+
+        BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+
+        String lineToRemove = texto;
+        String currentLine;
+
+        while((currentLine = reader.readLine()) != null) {
+            String trimmedLine = currentLine.trim();
+            if(!trimmedLine.equals(lineToRemove)) {
+                writer.write(currentLine + System.getProperty("line.separator"));
+            }
+        }
+        writer.close();
+        reader.close();
+        if(inputFile.delete()){
+            System.out.println("borrado");
+        }else{
+            System.out.println("no borrado");
+        }
+
+        File newFile = new File("C:\\Users\\carlo\\IdeaProjects\\PruebasBot\\src\\main\\java\\Intercambios.txt");
+        Boolean succesful = tempFile.renameTo(newFile);
+
     }
 
 
