@@ -549,7 +549,7 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         while(reader.hasNextLine()){
-            lista += reader.nextLine() + "\n";
+            lista += reader.nextLine() + "\n\n";
         }
 
         return lista;
@@ -616,8 +616,8 @@ public class FabuBot extends TelegramLongPollingBot {
     }
 
     public static void eliminaPokemon(String texto) throws IOException{
-        File inputFile = new File("C:\\Users\\carlo\\IdeaProjects\\PruebasBot\\src\\main\\java\\Intercambios.txt");
-        File tempFile = new File("C:\\Users\\carlo\\IdeaProjects\\PruebasBot\\src\\main\\java\\myTempFile.txt");
+        File inputFile = new File("C:\\Users\\carlo\\IdeaProjects\\FabulandBot\\src\\main\\java\\Intercambios.txt");
+        File tempFile = new File("C:\\Users\\carlo\\IdeaProjects\\FabulandBot\\src\\main\\java\\myTempFile.txt");
 
         BufferedReader reader = new BufferedReader(new FileReader(inputFile));
         BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
@@ -639,7 +639,7 @@ public class FabuBot extends TelegramLongPollingBot {
             System.out.println("no borrado");
         }
 
-        File newFile = new File("C:\\Users\\carlo\\IdeaProjects\\PruebasBot\\src\\main\\java\\Intercambios.txt");
+        File newFile = new File("C:\\Users\\carlo\\IdeaProjects\\FabulandBot\\src\\main\\java\\Intercambios.txt");
         Boolean succesful = tempFile.renameTo(newFile);
 
     }
