@@ -170,11 +170,9 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("aggron")){
-            try {
-                writer("Counter.txt");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
+            writer("Counter.txt");
+
             message.setText("Triturado " + reader("Counter.txt") + " veces.");
             isMessage = true;
 
@@ -510,17 +508,40 @@ public class FabuBot extends TelegramLongPollingBot {
 
     }
 
-    public void writer(String archivo) throws IOException {
+    public static void writer(String archivo) {
         String ruta = "src/main/java/"+ archivo +"";
         File fichero = new File(ruta);
-        Scanner reader = new Scanner(fichero);
-        FileWriter writer = new FileWriter(ruta, false);
-        String texto = reader("Counter.txt");
-        int nTxt = Integer.parseInt(texto) + 1;
-        writer.write(nTxt);
-        reader.close();
-        writer.close();
+        String cont = "";
+
+        try {
+            Scanner reader = new Scanner(fichero);
+            cont = reader.nextLine();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(ruta, false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+        int nTxt = Integer.parseInt(cont) + 1;
+        try {
+            writer.write(nTxt + "");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     public String getBotUsername() {
         return "FabulandBot";
