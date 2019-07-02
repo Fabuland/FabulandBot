@@ -373,7 +373,7 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
-        else if(recogWord.toLowerCase().contains("añadir pokemon inter: ")){
+        else if(recogWord.toLowerCase().contains("añadir pokemon inter:")){
             message.setText(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1) + " añadido");
             escribirPokemon(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1));
 
@@ -381,17 +381,19 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
-        else if(recogWord.toLowerCase().contains("eliminar pokemon inter: ")){
-            if(borrado == true) {
-                message.setText(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1) + " eliminado");
-            }else{
-                message.setText("El Pokémon no está en la lista.");
-            }
+        else if(recogWord.toLowerCase().contains("eliminar pokemon inter:")){
             try {
                 eliminaPokemon(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1));
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+            if(borrado == true) {
+                message.setText(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1) + " eliminado");
+            }else{
+                message.setText("El Pokémon no está en la lista.");
+            }
+
 
             isMessage = true;
 
