@@ -4,6 +4,10 @@ import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class FabuBot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
 
@@ -150,7 +154,7 @@ public class FabuBot extends TelegramLongPollingBot {
                     "- Entre cuántos cae una T4\n" +
                     "- Qué hace daño a xxxxx (siendo xxxxx un tipo cualquiera)\n" +
                     "\n" +
-                    "- Paginas de utilidad\n" +
+                    "- Páginas de utilidad\n" +
                     "Se irán actualizando");
             isMessage = true;
         }
@@ -163,7 +167,13 @@ public class FabuBot extends TelegramLongPollingBot {
             isMessage = true;
         }
 
-        else if(recogWord.toLowerCase().contains("paginas de utilidad")){
+        else if(recogWord.toLowerCase().contains("saca el contador")){
+            message.setText(reader("Counter.txt"));
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("páginas de utilidad")){
             message.setText("https://pokemon.gameinfo.io/ - Para saber todas las estadísticas de los Pokémon\n" +
                     "https://www.pokebattler.com/raids - Para hacer simulaciones de raids\n" +
                     "https://www.reddit.com/r/TheSilphRoad/ - La información más verídica que podrás encontrar y la fuente de todos los estudios.\n" +
@@ -473,6 +483,23 @@ public class FabuBot extends TelegramLongPollingBot {
                 e.printStackTrace();
             }
         }
+
+    }
+
+    public String reader(String archivo){
+
+        String ruta = "src/main/java/"+ archivo +"";
+        File fichero = new File(ruta);
+        String cont = "";
+
+        try {
+            Scanner reader = new Scanner(fichero);
+            cont = reader.nextLine();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return cont;
 
     }
 
