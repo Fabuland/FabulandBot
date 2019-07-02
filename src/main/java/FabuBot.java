@@ -25,8 +25,28 @@ public class FabuBot extends TelegramLongPollingBot {
             isMessage = true;
         }
 
+        else if(recogWord.toLowerCase().contains("en qué piensas fabubot")){
+            message.setText(" ▒▒▒▒▒▒▒▒▄▄▄▄▄▄▄▄▒▒▒▒▒▒▒▒ \n" +
+                    "▒▒▒▒▒▄█▀▀░░░░░░▀▀█▄▒▒▒▒▒ \n" +
+                    "▒▒▒▄█▀▄██▄░░░░░░░░▀█▄▒▒▒ \n" +
+                    "▒▒█▀░▀░░▄▀░░░░▄▀▀▀▀░▀█▒▒ \n" +
+                    "▒█▀░░░░███░░░░▄█▄░░░░▀█▒ \n" +
+                    "▒█░░░░░░▀░░░░░▀█▀░░░░░█▒ \n" +
+                    "▒█░░░░░░░░░░░░░░░░░░░░█▒ \n" +
+                    "▒█░░██▄░░▀▀▀▀▄▄░░░░░░░█▒ \n" +
+                    "▒▀█░█░█░░░▄▄▄▄▄░░░░░░█▀▒ \n" +
+                    "▒▒▀█▀░▀▀▀▀░▄▄▄▀░░░░▄█▀▒▒ \n" +
+                    "▒▒▒█░░░░░░▀█░░░░░▄█▀▒▒▒▒ \n" +
+                    "▒▒▒█▄░░░░░▀█▄▄▄█▀▀▒▒▒▒▒▒ \n" +
+                    "▒▒▒▒▀▀▀▀▀▀▀▒▒▒▒▒▒▒▒▒▒▒▒▒");
+            isMessage = true;
+
+        }
+
         else if(recogWord.toLowerCase().contains("mejores atacantes")){
-            message.setText("Siempre Machamp");
+            photo.setPhoto("https://i.imgur.com/V4PyIVK.png");
+            isPhoto = true;
+            message.setText("El orden puede variar dependiendo de la situación.");
             isMessage = true;
         }
 
@@ -112,11 +132,6 @@ public class FabuBot extends TelegramLongPollingBot {
             
         }
 
-        else if(recogWord.toLowerCase().contains("fabu")){
-            message.setText("Espero que hayas dicho algo bueno del todopoderoso Fabuland");
-            isMessage = true;
-        }
-
         else if(recogWord.toLowerCase().contains("lista de comandos")){
             message.setText("Mis comandos disponibles son:\n" +
                     "- Mejores atacantes\n" +
@@ -127,7 +142,7 @@ public class FabuBot extends TelegramLongPollingBot {
                     "- Counters para Groudon\n" +
                     "- Con cuántos cae Deoxys velocidad?\n" +
                     "- Counters para Deoxys velocidad\n" +
-                    "- Coste de polvo y caramelos\n" +
+                    "- Coste de polvos y caramelos\n" +
                     "- Cómo funcionan los lucky\n" +
                     "- Entre cuántos cae una T1\n" +
                     "- Entre cuántos cae una T2\n" +
@@ -143,7 +158,8 @@ public class FabuBot extends TelegramLongPollingBot {
         else if(recogWord.toLowerCase().contains("comandos chorra")){
             message.setText("- Piedra papel y tijeras\n" +
                             "- Cuenta chistes (por ahora sólo uno)\n" +
-                            "- Dame n X (siendo n un número entre 1 y 500");
+                            "- Dame n X (siendo n un número entre 1 y 500\n" +
+                            "- En qué piensas fabubot?");
             isMessage = true;
         }
 
@@ -432,6 +448,11 @@ public class FabuBot extends TelegramLongPollingBot {
                 message.setText(mandarX);
             }
 
+            isMessage = true;
+        }
+
+        else if(recogWord.toLowerCase().contains("fabu")){
+            message.setText("Espero que hayas dicho algo bueno del todopoderoso Fabuland");
             isMessage = true;
         }
 
