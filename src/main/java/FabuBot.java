@@ -6,6 +6,8 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class FabuBot extends TelegramLongPollingBot {
@@ -167,8 +169,13 @@ public class FabuBot extends TelegramLongPollingBot {
             isMessage = true;
         }
 
-        else if(recogWord.toLowerCase().contains("saca el contador")){
-            message.setText(reader("Counter.txt"));
+        else if(recogWord.toLowerCase().contains("aggron")){
+            try {
+                writer("Counter.txt");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            message.setText("Triturado " + reader("Counter.txt") + " veces.");
             isMessage = true;
 
         }
@@ -501,6 +508,18 @@ public class FabuBot extends TelegramLongPollingBot {
 
         return cont;
 
+    }
+
+    public void writer(String archivo) throws IOException {
+        String ruta = "src/main/java/"+ archivo +"";
+        File fichero = new File(ruta);
+        Scanner reader = new Scanner(fichero);
+        FileWriter writer = new FileWriter(ruta, false);
+        String texto = reader("Counter.txt");
+        int nTxt = Integer.parseInt(texto) + 1;
+        writer.write(nTxt);
+        reader.close();
+        writer.close();
     }
 
     public String getBotUsername() {
