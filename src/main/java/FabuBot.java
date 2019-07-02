@@ -9,9 +9,9 @@ import java.util.Scanner;
 
 public class FabuBot extends TelegramLongPollingBot {
 
-    boolean vacio;
+    boolean vacio = false;
     int n = 1;
-    boolean borrado;
+    boolean borrado = false;
 
     public void onUpdateReceived(Update update) {
 
@@ -394,6 +394,7 @@ public class FabuBot extends TelegramLongPollingBot {
                 message.setText("El Pokémon no está en la lista.");
             }
 
+            borrado = false;
 
             isMessage = true;
 
