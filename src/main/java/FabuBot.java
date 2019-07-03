@@ -362,6 +362,12 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
+        else if(recogWord.toLowerCase().contains("ratio de spinda")){
+            message.setText("Que te calle pesado, búscalo tú tanto preguntar, reddit.com/r/thesilphroad, venga ponte a buscar");
+            isMessage = true;
+
+        }
+
         else if(recogWord.toLowerCase().contains("simular") && recogWord.toLowerCase().contains("vs")){
             String mensaje = update.getMessage().getText();
             int ind1 = mensaje.indexOf(' ');
