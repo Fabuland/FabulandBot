@@ -24,6 +24,7 @@ public class FabuBot extends TelegramLongPollingBot {
         SendPhoto photo = new SendPhoto();
         String dameX = update.getMessage().getText();
         int resultadoPpt = (int) (Math.random() * 3) + 1;
+        int nChistes = (int) (Math.random() * 3) + 1;
 
         boolean isMessage = false;
         boolean isPhoto = false;
@@ -164,11 +165,15 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("comandos chorra")){
-            message.setText("- Piedra papel y tijeras\n" +
-                            "- Cuenta chistes (por ahora sólo uno)\n" +
-                            "- Dame n X (siendo n un número entre 1 y 500\n" +
-                            "- En qué piensas fabubot?\n" +
-                            "- Aggron");
+            message.setText("\uD83D\uDD30 Piedra papel y tijeras\n" +
+                            "\uD83D\uDD30 Cuenta chistes\n" +
+                            "\uD83D\uDD30 Dame n X (siendo n un número entre 1 y 500\n" +
+                            "\uD83D\uDD30 En qué piensas fabubot?\n" +
+                            "\uD83D\uDD30 Aggron\n" +
+                            "\uD83D\uDD30 Añadir Poke:\n" +
+                            "\uD83D\uDD30 Eliminar Poke:\n" +
+                            "\uD83D\uDD30 Muestra lista poke:\n" +
+                            "\uD83D\uDD30 Fabubot malo");
             isMessage = true;
         }
 
@@ -353,6 +358,12 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
+        else if(recogWord.toLowerCase().contains("fabubot malo") && resultadoPpt == 3){
+        photo.setPhoto("https://i.imgur.com/PjIcTz5.png");
+        isPhoto = true;
+
+        }
+
         else if(recogWord.toLowerCase().contains("/start")){
             message.setText("Buenas! Intentaré ayudarte en la medida de lo posible, para ver " +
                     "mis comandos escribe \"Lista de comandos\" y verás los comandos que tengo " +
@@ -368,12 +379,22 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("chiste")){
-            photo.setPhoto("https://i.imgur.com/QUULMsz.jpg");
-            isPhoto = true;
+            if(nChistes == 1) {
+                photo.setPhoto("https://i.imgur.com/QUULMsz.jpg");
+                isPhoto = true;
+            }else if(nChistes == 2){
+                photo.setPhoto("https://i.imgur.com/FqJjVYL.jpg");
+                isPhoto = true;
+                message.setText("Quién se ha tirado");
+                isMessage = true;
+            }else if(nChistes == 3){
+                photo.setPhoto("https://i.imgur.com/eRBns9M.jpg");
+                isPhoto = true;
+            }
 
         }
 
-        else if(recogWord.toLowerCase().contains("añadir pokemon inter:")){
+        else if(recogWord.toLowerCase().contains("añadir poke:")){
             message.setText(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1) + " añadido");
             escribirPokemon(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1));
 
@@ -381,7 +402,7 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
-        else if(recogWord.toLowerCase().contains("eliminar pokemon inter:")){
+        else if(recogWord.toLowerCase().contains("eliminar poke:")){
             try {
                 eliminaPokemon(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1));
             } catch (IOException e) {
@@ -407,9 +428,9 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
-        else if(recogWord.toLowerCase().contains("muestra lista pokemon inter")){
+        else if(recogWord.toLowerCase().contains("muestra lista poke:")){
             message.setText(readerLista("Intercambios.txt"));
-            
+
             if(vacio == true){
                 message.setText("Lista vacía.");
             }
@@ -474,6 +495,8 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("tijeras") && resultadoPpt == 2){
+            photo.setPhoto("https://i.imgur.com/gi4VvfK.jpg");
+            isPhoto = true;
             message.setText("Papel!! Has ganado :(");
             isMessage = true;
 
