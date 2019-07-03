@@ -24,7 +24,7 @@ public class FabuBot extends TelegramLongPollingBot {
         SendPhoto photo = new SendPhoto();
         String dameX = update.getMessage().getText();
         int resultadoPpt = (int) (Math.random() * 3) + 1;
-        int nChistes = (int) (Math.random() * 3) + 1;
+        int nChistes = 1;
 
         boolean isMessage = false;
         boolean isPhoto = false;
@@ -358,7 +358,7 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
-        else if(recogWord.toLowerCase().contains("fabubot malo") && resultadoPpt == 3){
+        else if(recogWord.toLowerCase().contains("fabubot malo")){
         photo.setPhoto("https://i.imgur.com/PjIcTz5.png");
         isPhoto = true;
 
@@ -382,14 +382,17 @@ public class FabuBot extends TelegramLongPollingBot {
             if(nChistes == 1) {
                 photo.setPhoto("https://i.imgur.com/QUULMsz.jpg");
                 isPhoto = true;
+                nChistes = 2;
             }else if(nChistes == 2){
                 photo.setPhoto("https://i.imgur.com/FqJjVYL.jpg");
                 isPhoto = true;
                 message.setText("Quién se ha tirado");
                 isMessage = true;
+                nChistes = 3;
             }else if(nChistes == 3){
                 photo.setPhoto("https://i.imgur.com/eRBns9M.jpg");
                 isPhoto = true;
+                nChistes = 1;
             }
 
         }
@@ -515,6 +518,8 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("tijera") && resultadoPpt == 2){
+            photo.setPhoto("https://i.imgur.com/gi4VvfK.jpg");
+            isPhoto = true;
             message.setText("Papel!! Has ganado :(");
             isMessage = true;
 
