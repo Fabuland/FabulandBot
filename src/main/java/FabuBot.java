@@ -380,6 +380,12 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
+        else if(recogWord.toLowerCase().contains("hora son las 10:00 cest")){
+            message.setText("Pues la misma que aquí, cuál va a ser");
+            isMessage = true;
+
+        }
+
         else if(recogWord.toLowerCase().contains("funciona la simulación")){
             message.setText("Si escribes \"Simular Vigoroth vs Yanma 0 1\" por ejemplo, te mandaré un link a pvpoke.com con la simulación " +
                     "entre esos dos Pokémon, 0 1 es el número de escudos, siendo 0 para Vigoroth y 1 para Yanma.\nSi escribes mal el nombre de un Pokémon " +
