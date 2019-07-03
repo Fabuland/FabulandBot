@@ -161,8 +161,8 @@ public class FabuBot extends TelegramLongPollingBot {
                     "\uD83D\uDD30 Entre cuántos cae una T4\n" +
                     "\uD83D\uDD30 Qué hace daño a xxxxx (siendo xxxxx un tipo cualquiera)\n" +
                     "\uD83D\uDD30 Páginas de utilidad\n" +
-                    "⚔ Simular pokemon vs pokemon\n" +
-                    "\uD83D\uDD30 Cómo funciona la simulación" +
+                    " ⚔ Simular pokemon vs pokemon\n" +
+                    "\uD83D\uDD30 Cómo funciona la simulación\n" +
                     "\n" +
                     "Se irán actualizando");
             isMessage = true;
@@ -383,7 +383,15 @@ public class FabuBot extends TelegramLongPollingBot {
         else if(recogWord.toLowerCase().contains("funciona la simulación")){
             message.setText("Si escribes \"Simular Vigoroth vs Yanma 0 1\" por ejemplo, te mandaré un link a pvpoke.com con la simulación " +
                     "entre esos dos Pokémon, 0 1 es el número de escudos, siendo 0 para Vigoroth y 1 para Yanma.\nSi escribes mal el nombre de un Pokémon " +
-                    "o pones más de 2 escudos la página no funcionará, tienes que escribirlo correctamente.\nPara los alola usa _alola, por ejemplo \"Golem_alola\"");
+                    "o pones más de 2 escudos la página no funcionará, tienes que escribirlo correctamente.\nPara los alola usa _alolan, por ejemplo \"Golem_alolan\"");
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("funciona la simulacion")){
+            message.setText("Si escribes \"Simular Vigoroth vs Yanma 0 1\" por ejemplo, te mandaré un link a pvpoke.com con la simulación " +
+                    "entre esos dos Pokémon, 0 1 es el número de escudos, siendo 0 para Vigoroth y 1 para Yanma.\nSi escribes mal el nombre de un Pokémon " +
+                    "o pones más de 2 escudos la página no funcionará, tienes que escribirlo correctamente.\nPara los alola usa _alolan, por ejemplo \"Golem_alolan\"");
             isMessage = true;
 
         }
