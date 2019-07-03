@@ -379,20 +379,24 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("chiste")){
+            n++;
             if(nChistes == 1) {
                 photo.setPhoto("https://i.imgur.com/QUULMsz.jpg");
                 isPhoto = true;
-                nChistes = 2;
+
             }else if(nChistes == 2){
                 photo.setPhoto("https://i.imgur.com/FqJjVYL.jpg");
                 isPhoto = true;
                 message.setText("Quién se ha tirado");
                 isMessage = true;
-                nChistes = 3;
+
             }else if(nChistes == 3){
                 photo.setPhoto("https://i.imgur.com/eRBns9M.jpg");
                 isPhoto = true;
-                nChistes = 1;
+
+            }
+            if(n == 3){
+                n = 0;
             }
 
         }
