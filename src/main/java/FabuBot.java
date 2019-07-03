@@ -144,23 +144,24 @@ public class FabuBot extends TelegramLongPollingBot {
 
         else if(recogWord.toLowerCase().contains("lista de comandos")){
             message.setText("Mis comandos disponibles son:\n" +
-                    "- Mejores atacantes\n" +
-                    "- Mejores defensores\n" +
-                    "- Cómo funcionan los IV?\n" +
-                    "- A qué hora empieza el CD\n" +
-                    "- Con cuántos cae Groudon?\n" +
-                    "- Counters para Groudon\n" +
-                    "- Con cuántos cae Deoxys velocidad?\n" +
-                    "- Counters para Deoxys velocidad\n" +
-                    "- Coste de polvos y caramelos\n" +
-                    "- Cómo funcionan los lucky\n" +
-                    "- Entre cuántos cae una T1\n" +
-                    "- Entre cuántos cae una T2\n" +
-                    "- Entre cuántos cae una T3\n" +
-                    "- Entre cuántos cae una T4\n" +
-                    "- Qué hace daño a xxxxx (siendo xxxxx un tipo cualquiera)\n" +
                     "\n" +
-                    "- Páginas de utilidad\n" +
+                    "\uD83D\uDD30 Mejores atacantes\n" +
+                    "\uD83D\uDD30 Mejores defensores\n" +
+                    "\uD83D\uDD30 Cómo funcionan los IV?\n" +
+                    "\uD83D\uDD30 A qué hora empieza el CD\n" +
+                    "\uD83D\uDD30 Con cuántos cae Groudon?\n" +
+                    "\uD83D\uDD30 Counters para Groudon\n" +
+                    "\uD83D\uDD30 Con cuántos cae Deoxys velocidad?\n" +
+                    "\uD83D\uDD30 Counters para Deoxys velocidad\n" +
+                    "\uD83D\uDD30 Coste de polvos y caramelos\n" +
+                    "\uD83D\uDD30 Cómo funcionan los lucky\n" +
+                    "\uD83D\uDD30 Entre cuántos cae una T1\n" +
+                    "\uD83D\uDD30 Entre cuántos cae una T2\n" +
+                    "\uD83D\uDD30 Entre cuántos cae una T3\n" +
+                    "\uD83D\uDD30 Entre cuántos cae una T4\n" +
+                    "\uD83D\uDD30 Qué hace daño a xxxxx (siendo xxxxx un tipo cualquiera)\n" +
+                    "\uD83D\uDD30 Páginas de utilidad\n" +
+                    "\n" +
                     "Se irán actualizando");
             isMessage = true;
         }
