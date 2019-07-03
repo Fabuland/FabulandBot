@@ -12,6 +12,7 @@ public class FabuBot extends TelegramLongPollingBot {
     boolean vacio = false;
     int n = 1;
     boolean borrado = false;
+    int nChistes = 1;
 
     public void onUpdateReceived(Update update) {
 
@@ -24,7 +25,7 @@ public class FabuBot extends TelegramLongPollingBot {
         SendPhoto photo = new SendPhoto();
         String dameX = update.getMessage().getText();
         int resultadoPpt = (int) (Math.random() * 3) + 1;
-        int nChistes = 1;
+
 
         boolean isMessage = false;
         boolean isPhoto = false;
@@ -379,7 +380,7 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("chiste")){
-            n++;
+            nChistes++;
             if(nChistes == 1) {
                 photo.setPhoto("https://i.imgur.com/QUULMsz.jpg");
                 isPhoto = true;
@@ -395,8 +396,8 @@ public class FabuBot extends TelegramLongPollingBot {
                 isPhoto = true;
 
             }
-            if(n == 3){
-                n = 0;
+            if(nChistes == 3){
+                nChistes = 0;
             }
 
         }
