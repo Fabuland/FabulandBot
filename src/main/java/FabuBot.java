@@ -161,6 +161,8 @@ public class FabuBot extends TelegramLongPollingBot {
                     "\uD83D\uDD30 Entre cuántos cae una T4\n" +
                     "\uD83D\uDD30 Qué hace daño a xxxxx (siendo xxxxx un tipo cualquiera)\n" +
                     "\uD83D\uDD30 Páginas de utilidad\n" +
+                    "⚔ Simular pokemon vs pokemon\n" +
+                    "\uD83D\uDD30 Cómo funciona la simulación" +
                     "\n" +
                     "Se irán actualizando");
             isMessage = true;
@@ -360,6 +362,32 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
+        else if(recogWord.toLowerCase().contains("simular") && recogWord.toLowerCase().contains("vs")){
+            String mensaje = update.getMessage().getText();
+            int ind1 = mensaje.indexOf(' ');
+            int ind2 = mensaje.indexOf(' ', ind1 + 1);
+            int ind3 = mensaje.indexOf(' ', ind2 + 1);
+            int ind4 = mensaje.indexOf(' ', ind3 + 1);
+            int ind5 = mensaje.indexOf(' ', ind4 + 1);
+            String primerPoke = mensaje.substring(ind1, ind2).trim().toLowerCase();
+            String segundoPoke = mensaje.substring(ind3, ind4).trim().toLowerCase();
+            String primerEscudo = mensaje.substring(ind4, ind5).trim();
+            String segundoEscudo = mensaje.substring(ind5).trim();
+
+            message.setText("https://pvpoke.com/battle/1500/"+ primerPoke +"/"+ segundoPoke +"/"+ primerEscudo +""+ segundoEscudo +"/");
+
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("funciona la simulación")){
+            message.setText("Si escribes \"Simular Vigoroth vs Yanma 0 1\" por ejemplo, te mandaré un link a pvpoke.com con la simulación " +
+                    "entre esos dos Pokémon, 0 1 es el número de escudos, siendo 0 para Vigoroth y 1 para Yanma.\nSi escribes mal el nombre de un Pokémon " +
+                    "o pones más de 2 escudos la página no funcionará, tienes que escribirlo correctamente.\nPara los alola usa _alola, por ejemplo \"Golem_alola\"");
+            isMessage = true;
+
+        }
+
         else if(recogWord.toLowerCase().contains("fabubot malo")){
         photo.setPhoto("https://i.imgur.com/PjIcTz5.png");
         isPhoto = true;
@@ -379,6 +407,8 @@ public class FabuBot extends TelegramLongPollingBot {
             isMessage = true;
 
         }
+
+
 
         else if(recogWord.toLowerCase().contains("chiste")){
             nChistes++;
