@@ -8,10 +8,8 @@ import java.io.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class FabuBot extends TelegramLongPollingBot {
 
@@ -19,28 +17,6 @@ public class FabuBot extends TelegramLongPollingBot {
     int n = 1;
     boolean borrado = false;
     int nChistes = 1;
-
-    /*public void mandarPruebas(){
-
-        int miChatID = 138516197;
-        final SendMessage fabu = new SendMessage();
-        fabu.setText("hola");
-        fabu.setChatId(String.valueOf(miChatID));
-        Timer t = new Timer();
-        TimerTask pole = new TimerTask() {
-
-
-            public void run() {
-                try {
-                    execute(fabu);
-                } catch (TelegramApiException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        t.schedule(pole, 0, 10000);
-
-    }*/
 
     public void onUpdateReceived(Update update) {
 
@@ -58,35 +34,10 @@ public class FabuBot extends TelegramLongPollingBot {
         boolean isMessage = false;
         boolean isPhoto = false;
 
-        /*DateFormat dateFormatter = new SimpleDateFormat("HH:mm:ss");
-        Date date = null;
-        try {
-            date = dateFormatter.parse("22:34:30");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        Timer timer = new Timer();
-
-        TimerTask pole = new TimerTask() {
-
-            public void run() {
-
-                long chatID = -1001381631523L;
-                SendMessage offtopic = new SendMessage();
-                offtopic.setChatId(chatID);
-                offtopic.setText("Pruebaaaa");
-                try {
-                    execute(offtopic);
-                } catch (TelegramApiException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        };
-
-        //Use this if you want to execute it once
-        timer.schedule(pole, date);*/
+        Calendar today = Calendar.getInstance();
+        today.set(Calendar.HOUR_OF_DAY, 23);
+        today.set(Calendar.MINUTE, 23);
+        today.set(Calendar.SECOND, 0);
 
         int miChatID = 138516197;
         final SendMessage fabu = new SendMessage();
@@ -104,8 +55,8 @@ public class FabuBot extends TelegramLongPollingBot {
                 }
             }
         };
-        t.schedule(pole, 0, 10000);
 
+        t.schedule(pole, today.getTime(), TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS));
 
 
         if(recogWord.equalsIgnoreCase("/aggron")){
