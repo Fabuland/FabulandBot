@@ -36,12 +36,14 @@ public class FabuBot extends TelegramLongPollingBot {
 
         Calendar today = Calendar.getInstance();
         today.set(Calendar.HOUR_OF_DAY, 23);
-        today.set(Calendar.MINUTE, 23);
+        today.set(Calendar.MINUTE, 28);
         today.set(Calendar.SECOND, 0);
 
         int miChatID = 138516197;
         final SendMessage fabu = new SendMessage();
-        fabu.setText("hola");
+        fabu.setText("xd");
+        fabu.setText("lmao");
+        fabu.setText("wtf");
         fabu.setChatId(String.valueOf(miChatID));
         Timer t = new Timer();
         TimerTask pole = new TimerTask() {
