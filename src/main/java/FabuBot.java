@@ -5,7 +5,13 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class FabuBot extends TelegramLongPollingBot {
 
@@ -13,6 +19,10 @@ public class FabuBot extends TelegramLongPollingBot {
     int n = 1;
     boolean borrado = false;
     int nChistes = 1;
+
+    public void run(){
+
+    }
 
     public void onUpdateReceived(Update update) {
 
@@ -27,11 +37,40 @@ public class FabuBot extends TelegramLongPollingBot {
         String dameX = update.getMessage().getText();
         int resultadoPpt = (int) (Math.random() * 3) + 1;
 
-
         boolean isMessage = false;
         boolean isPhoto = false;
 
-        
+        DateFormat dateFormatter = new SimpleDateFormat("HH:mm:ss");
+        Date date = null;
+        try {
+            date = dateFormatter.parse("22:34:30");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Timer timer = new Timer();
+
+        TimerTask pole = new TimerTask() {
+
+            public void run() {
+
+                long chatID = -1001381631523L;
+                SendMessage offtopic = new SendMessage();
+                offtopic.setChatId(chatID);
+                offtopic.setText("Pruebaaaa");
+                try {
+                    execute(offtopic);
+                } catch (TelegramApiException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+
+        //Use this if you want to execute it once
+        timer.schedule(pole, date);
+
+
 
         if(recogWord.equalsIgnoreCase("/aggron")){
             message.setText("Triturar de inmediato");
