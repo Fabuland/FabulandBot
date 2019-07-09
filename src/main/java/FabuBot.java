@@ -20,9 +20,27 @@ public class FabuBot extends TelegramLongPollingBot {
     boolean borrado = false;
     int nChistes = 1;
 
-    public void run(){
+    /*public void mandarPruebas(){
 
-    }
+        int miChatID = 138516197;
+        final SendMessage fabu = new SendMessage();
+        fabu.setText("hola");
+        fabu.setChatId(String.valueOf(miChatID));
+        Timer t = new Timer();
+        TimerTask pole = new TimerTask() {
+
+
+            public void run() {
+                try {
+                    execute(fabu);
+                } catch (TelegramApiException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        t.schedule(pole, 0, 10000);
+
+    }*/
 
     public void onUpdateReceived(Update update) {
 
@@ -40,7 +58,7 @@ public class FabuBot extends TelegramLongPollingBot {
         boolean isMessage = false;
         boolean isPhoto = false;
 
-        DateFormat dateFormatter = new SimpleDateFormat("HH:mm:ss");
+        /*DateFormat dateFormatter = new SimpleDateFormat("HH:mm:ss");
         Date date = null;
         try {
             date = dateFormatter.parse("22:34:30");
@@ -68,7 +86,25 @@ public class FabuBot extends TelegramLongPollingBot {
         };
 
         //Use this if you want to execute it once
-        timer.schedule(pole, date);
+        timer.schedule(pole, date);*/
+
+        int miChatID = 138516197;
+        final SendMessage fabu = new SendMessage();
+        fabu.setText("hola");
+        fabu.setChatId(String.valueOf(miChatID));
+        Timer t = new Timer();
+        TimerTask pole = new TimerTask() {
+
+
+            public void run() {
+                try {
+                    execute(fabu);
+                } catch (TelegramApiException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        t.schedule(pole, 0, 10000);
 
 
 
