@@ -18,6 +18,7 @@ public class FabuBot extends TelegramLongPollingBot {
 
         System.out.println(update.getMessage().getText());
         System.out.println(update.getMessage().getFrom().getFirstName());
+        System.out.println(update.getMessage().getChatId());
 
         String recogWord = update.getMessage().getText();
         String caeGroudon = "cae groudon";
@@ -29,6 +30,8 @@ public class FabuBot extends TelegramLongPollingBot {
 
         boolean isMessage = false;
         boolean isPhoto = false;
+
+        
 
         if(recogWord.equalsIgnoreCase("/aggron")){
             message.setText("Triturar de inmediato");
