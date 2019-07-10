@@ -34,7 +34,7 @@ public class FabuBot extends TelegramLongPollingBot {
         boolean isMessage = false;
         boolean isPhoto = false;
 
-        Calendar today = Calendar.getInstance();
+        /*Calendar today = Calendar.getInstance();
         today.set(Calendar.HOUR_OF_DAY, 23);
         today.set(Calendar.MINUTE, 28);
         today.set(Calendar.SECOND, 0);
@@ -58,7 +58,7 @@ public class FabuBot extends TelegramLongPollingBot {
             }
         };
 
-        t.schedule(pole, today.getTime(), TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS));
+        t.schedule(pole, today.getTime(), TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS));*/
 
 
         if(recogWord.equalsIgnoreCase("/aggron")){
