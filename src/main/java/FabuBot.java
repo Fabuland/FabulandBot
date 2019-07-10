@@ -209,7 +209,8 @@ public class FabuBot extends TelegramLongPollingBot {
                             "\uD83D\uDD30 Eliminar Poke:\n" +
                             "\uD83D\uDD30 Muestra lista poke:\n" +
                             "\uD83D\uDD30 Fabubot malo\n" +
-                            "\uD83D\uDD30 Fabubot mata a -----");
+                            "\uD83D\uDD30 Fabubot mata a -----\n" +
+                            "\uD83D\uDD30 Lapras");
             isMessage = true;
         }
 
@@ -246,7 +247,7 @@ public class FabuBot extends TelegramLongPollingBot {
 
         else if(recogWord.toLowerCase().contains("lapras")){
 
-            message.setText("───────────────────███▓\n" +
+            message.setText("─────────────────███▓\n" +
                             "─────████───────█────▓\n" +
                             "───██░───██────█░░────▓\n" +
                             "──█░───────█───█░░░░──▓\n" +
@@ -299,6 +300,18 @@ public class FabuBot extends TelegramLongPollingBot {
                     "Entre 4 si hay counters al 25+ / 20+ \n" +
                     "\n" +
                     "Preferible siempre que haya amistad y clima a favor");
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("día de Entei")){
+            message.setText("El 14 de Julio, Domingo de 16:00 a 19:00");
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("dia de Entei")){
+            message.setText("El 14 de Julio, Domingo de 16:00 a 19:00");
             isMessage = true;
 
         }
