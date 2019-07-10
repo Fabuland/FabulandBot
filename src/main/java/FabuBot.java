@@ -208,7 +208,8 @@ public class FabuBot extends TelegramLongPollingBot {
                             "\uD83D\uDD30 Añadir Poke:\n" +
                             "\uD83D\uDD30 Eliminar Poke:\n" +
                             "\uD83D\uDD30 Muestra lista poke:\n" +
-                            "\uD83D\uDD30 Fabubot malo");
+                            "\uD83D\uDD30 Fabubot malo\n" +
+                            "\uD83D\uDD30 Fabubot mata a -----");
             isMessage = true;
         }
 
@@ -227,6 +228,18 @@ public class FabuBot extends TelegramLongPollingBot {
                     "https://www.reddit.com/r/TheSilphRoad/ - La información más verídica que podrás encontrar y la fuente de todos los estudios.\n" +
                     "http://pvpoke.com/ - Simulador de PVP y mejores rankings\n" +
                     "https://gostadium.club/pvp/iv -  Calculador de IV para PVP");
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("fabubot mata a ")){
+            String mensaje = update.getMessage().getText();
+            int ind1 = mensaje.indexOf(' ');
+            int ind2 = mensaje.indexOf(' ', ind1 + 1);
+            int ind3 = mensaje.indexOf(' ', ind2 + 1);
+            String nombreP = mensaje.substring(ind3).trim();
+
+            message.setText("(⌐ ͡■ ͜ʖ ͡■) ︻╦̵══╤─  " + nombreP);
             isMessage = true;
 
         }
@@ -393,12 +406,6 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
-        else if(recogWord.toLowerCase().contains("ratio de spinda")){
-            message.setText("Que te calle pesado, búscalo tú tanto preguntar, reddit.com/r/thesilphroad, venga ponte a buscar");
-            isMessage = true;
-
-        }
-
         else if(recogWord.toLowerCase().contains("simular") && recogWord.toLowerCase().contains("vs")){
             String mensaje = update.getMessage().getText();
             int ind1 = mensaje.indexOf(' ');
@@ -413,12 +420,6 @@ public class FabuBot extends TelegramLongPollingBot {
 
             message.setText("https://pvpoke.com/battle/1500/"+ primerPoke +"/"+ segundoPoke +"/"+ primerEscudo +""+ segundoEscudo +"/");
 
-            isMessage = true;
-
-        }
-
-        else if(recogWord.toLowerCase().contains("hora son las 10:00 cest")){
-            message.setText("Pues la misma que aquí, cuál va a ser");
             isMessage = true;
 
         }
