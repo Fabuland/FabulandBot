@@ -675,6 +675,10 @@ public class FabuBot extends TelegramLongPollingBot {
             }
             isMessage = true;
 
+        }else if(recogWord.toLowerCase().contains("muestra lista id ppt")){
+            message.setText(readerLista("idppt.txt"));
+            isMessage = true;
+
         }else if(recogWord.toLowerCase().contains("dame") && recogWord.toLowerCase().contains("x")){
                 dameX = dameX.replaceAll("\\D+", "");
                 int nX = Integer.parseInt(dameX);
