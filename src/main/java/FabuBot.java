@@ -572,7 +572,7 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("hola fabubot!")){
-            message.setText(readerLista("Hola " + update.getMessage().getFrom().getFirstName() + "!"));
+            message.setText("Hola " + update.getMessage().getFrom().getFirstName() + "!");
 
             if(vacio == true){
                 message.setText("Lista vacía.");
