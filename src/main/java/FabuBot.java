@@ -562,7 +562,7 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("muestra lista poke:")){
-            message.setText(readerLista("Intercambios.txt"));
+            message.setText(readerLista("src/main/Java/Intercambios.txt"));
 
             if(vacio == true){
                 message.setText("Lista vacía.");
@@ -760,7 +760,7 @@ public class FabuBot extends TelegramLongPollingBot {
     }
 
     public String readerLista(String archivo){
-        String ruta = "src/main/java/"+ archivo +"";
+        String ruta = archivo;
         File fichero = new File(ruta);
         String lista = "";
         Scanner reader = null;
