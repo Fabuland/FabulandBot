@@ -215,7 +215,7 @@ public class FabuBot extends TelegramLongPollingBot {
 
         else if(recogWord.toLowerCase().contains("aggron")){
 
-            writer("Counter.txt");
+            writerSuma("Counter.txt");
 
             message.setText("Triturado " + reader("Counter.txt") + " veces.");
             isMessage = true;
@@ -529,7 +529,7 @@ public class FabuBot extends TelegramLongPollingBot {
 
         else if(recogWord.toLowerCase().contains("añadir poke:")){
             message.setText(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1) + " añadido");
-            escribirPokemon(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1));
+            writerTexto(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1), "src/main/Java/Intercambios.txt");
 
             isMessage = true;
 
@@ -665,21 +665,29 @@ public class FabuBot extends TelegramLongPollingBot {
             message.setText("Tijeras!! Hemos empatado :/");
             isMessage = true;
 
-        }
 
-        else if(recogWord.toLowerCase().contains("dame") && recogWord.toLowerCase().contains("x")){
-            dameX = dameX.replaceAll("\\D+", "");
-            int nX = Integer.parseInt(dameX);
-            String mandarX = "";
-            if (nX < 500){
-                for (int i = 0; i < nX; i++) {
-                    mandarX += "x";
-                }
-                message.setText(mandarX);
+        } else if(recogWord.toLowerCase().contains("inscribirme ranking piedra papel tijeras")){
+            if (comprobarExiste("idppt.txt", String.valueOf(update.getMessage().getFrom().getId()))) {
+                message.setText("Ya estás inscrit@");
+            } else {
+                writerTexto(String.valueOf(update.getMessage().getFrom().getId()), "idppt.txt");
+                message.setText("Perfecto! Te he apuntado!");
             }
-
             isMessage = true;
-        }
+
+        }else if(recogWord.toLowerCase().contains("dame") && recogWord.toLowerCase().contains("x")){
+                dameX = dameX.replaceAll("\\D+", "");
+                int nX = Integer.parseInt(dameX);
+                String mandarX = "";
+                if (nX < 500){
+                    for (int i = 0; i < nX; i++) {
+                        mandarX += "x";
+                    }
+                    message.setText(mandarX);
+                }
+
+                isMessage = true;
+            }
 
         /*else if(recogWord.toLowerCase().contains("fabu")){
             message.setText("Espero que hayas dicho algo bueno del todopoderoso Fabuland");
@@ -724,6 +732,29 @@ public class FabuBot extends TelegramLongPollingBot {
 
     }
 
+    public boolean comprobarExiste(String archivo, String texto){
+        String ruta = archivo;
+        File fichero = new File(ruta);
+        String linea = "";
+        Scanner reader = null;
+        int contLineas = 0;
+        boolean existe = false;
+        try {
+            reader = new Scanner(fichero);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        while(reader.hasNextLine()){
+
+            if(reader.nextLine().contains(texto)){
+                existe = true;
+            }
+        }
+
+        return existe;
+    }
+
     public String readerLista(String archivo){
         String ruta = "src/main/java/"+ archivo +"";
         File fichero = new File(ruta);
@@ -750,7 +781,7 @@ public class FabuBot extends TelegramLongPollingBot {
         return lista;
     }
 
-    public void writer(String archivo) {
+    public void writerSuma(String archivo) {
         String ruta = "src/main/java/"+ archivo +"";
         File fichero = new File(ruta);
         String cont = "";
@@ -784,8 +815,8 @@ public class FabuBot extends TelegramLongPollingBot {
         }
     }
 
-    public void escribirPokemon(String texto) {
-        String ruta = "src/main/java/Intercambios.txt";
+    public void writerTexto(String texto, String archivo) {
+        String ruta = archivo;
 
         FileWriter writer = null;
         try {
