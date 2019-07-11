@@ -25,7 +25,6 @@ public class FabuBot extends TelegramLongPollingBot {
         System.out.println(update.getMessage().getChatId());
 
         String recogWord = update.getMessage().getText();
-        String caeGroudon = "cae groudon";
         SendMessage message = new SendMessage();
         SendPhoto photo = new SendPhoto();
         String dameX = update.getMessage().getText();
@@ -96,20 +95,18 @@ public class FabuBot extends TelegramLongPollingBot {
             isMessage = true;
         }
 
-        else if(recogWord.toLowerCase().contains(caeGroudon)){
-            message.setText("Entre 3 si hay counters al 35+\n" +
+        else if(recogWord.toLowerCase().contains("cae mewtwo")){
+            message.setText("Entre 3 si hay counters al 40/35+ (complicado)\n" +
                     "Entre 4 si hay counters al 30+\nEntre 5 con counters al 20+\n" +
-                    "Entre 21 si alguno de vosotros usa Aggron\nPreferible siempre que haya amistad " +
-                    "y clima a favor");
+                    "Importa mucho que llevéis los counters adecuados como Giratina Origen o " +
+                    "Gengar Legacy para hacerlo entre pocos, si no tenéis equipo harán falta 5-6 ");
             isMessage = true;
 
         }
 
-        else if(recogWord.toLowerCase().contains("counters para groudon")){
-            message.setText("En clima neutro y a lvl 30 son (en este orden): \nGyarados, Mewtwo " +
-                    "(rayo hielo), Kyogre, Roserade," +
-                    "Venusaur (CD), Feraligatr. Sceptile, Weavile, Palkia, Exeggutor Al, Glaceon, Mamoswine.\n" +
-                    "Con clima soleado los de planta pasan a primer puesto.");
+        else if(recogWord.toLowerCase().contains("counters para mewtwo")){
+            message.setText("En clima neutro y a lvl 30 son (en este orden): \nGiratina Origen, Gengar (legacy), " +
+                    "Tyranitar, Weavile, Mewtwo (bola sombra), Banette, Honchkrow, Houndoom, Absol, Pinsir.");
             isMessage = true;
         }
 
@@ -180,8 +177,8 @@ public class FabuBot extends TelegramLongPollingBot {
                     "\uD83D\uDD30 Mejores defensores\n" +
                     "\uD83D\uDD30 Cómo funcionan los IV?\n" +
                     "\uD83D\uDD30 A qué hora empieza el CD\n" +
-                    "\uD83D\uDD30 Con cuántos cae Groudon?\n" +
-                    "\uD83D\uDD30 Counters para Groudon\n" +
+                    "\uD83D\uDD30 Con cuántos cae Mewtwo armadura?\n" +
+                    "\uD83D\uDD30 Counters para Mewtwo armadura\n" +
                     "\uD83D\uDD30 Con cuántos cae Deoxys velocidad?\n" +
                     "\uD83D\uDD30 Counters para Deoxys velocidad\n" +
                     "\uD83D\uDD30 Coste de polvos y caramelos\n" +
@@ -194,6 +191,7 @@ public class FabuBot extends TelegramLongPollingBot {
                     "\uD83D\uDD30 Páginas de utilidad\n" +
                     " ⚔ Simular pokemon vs pokemon\n" +
                     "\uD83D\uDD30 Cómo funciona la simulación\n" +
+                    "\uD83D\uDD30 Día de Entei\n" +
                     "\n" +
                     "Se irán actualizando");
             isMessage = true;
@@ -210,7 +208,8 @@ public class FabuBot extends TelegramLongPollingBot {
                             "\uD83D\uDD30 Muestra lista poke:\n" +
                             "\uD83D\uDD30 Fabubot malo\n" +
                             "\uD83D\uDD30 Fabubot mata a -----\n" +
-                            "\uD83D\uDD30 Lapras");
+                            "\uD83D\uDD30 Lapras\n" +
+                            "\uD83D\uDD30 Hola Fabubot!");
             isMessage = true;
         }
 
@@ -572,7 +571,15 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
+        else if(recogWord.toLowerCase().contains("hola fabubot!")){
+            message.setText(readerLista("Hola " + update.getMessage().getFrom().getFirstName() + "!"));
 
+            if(vacio == true){
+                message.setText("Lista vacía.");
+            }
+            isMessage = true;
+
+        }
 
         else if(recogWord.toLowerCase().contains("funcionan los lucky")){
             photo.setPhoto("https://i.redd.it/shhffsq90uk11.png");
