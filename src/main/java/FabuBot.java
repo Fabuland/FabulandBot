@@ -666,7 +666,7 @@ public class FabuBot extends TelegramLongPollingBot {
             isMessage = true;
 
 
-        } else if(recogWord.toLowerCase().contains("inscribirme ranking piedra papel tijeras")){
+        } else if(recogWord.toLowerCase().contains("inscribirme ranking ppt")){
             if (comprobarExiste("idppt.txt", String.valueOf(update.getMessage().getFrom().getId()))) {
                 message.setText("Ya estás inscrit@");
             } else {
