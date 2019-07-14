@@ -95,6 +95,7 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("mudkip")){
+            gif.setChatId(update.getMessage().getChatId());
             gif.setAnimation("https://media1.giphy.com/media/BG4rps53LGPzW/giphy.gif");
             isGif = true;
         }
