@@ -90,6 +90,11 @@ public class FabuBot extends TelegramLongPollingBot {
             isMessage = true;
         }
 
+        else if(recogWord.toLowerCase().contains("mejores atacantes")){
+            photo.setPhoto("https://i.giphy.com/media/LIYmzShq9Ahyg/giphy.gif");
+            isPhoto = true;
+        }
+
         else if(recogWord.toLowerCase().contains("mejores defensores")){
             message.setText("Siempre Blissey");
             isMessage = true;
@@ -208,8 +213,9 @@ public class FabuBot extends TelegramLongPollingBot {
                             "\uD83D\uDD30 Muestra lista poke:\n" +
                             "\uD83D\uDD30 Fabubot malo\n" +
                             "\uD83D\uDD30 Fabubot mata a -----\n" +
-                            "\uD83D\uDD30 Lapras\n" +
-                            "\uD83D\uDD30 Hola Fabubot!");
+                            "\uD83D\uDD30 Mudkip\n" +
+                            "\uD83D\uDD30 Hola Fabubot!" +
+                            "\uD83D\uDD30 uwu");
             isMessage = true;
         }
 
