@@ -1,4 +1,5 @@
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.methods.send.SendAnimation;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -27,11 +28,13 @@ public class FabuBot extends TelegramLongPollingBot {
         String recogWord = update.getMessage().getText();
         SendMessage message = new SendMessage();
         SendPhoto photo = new SendPhoto();
+        SendAnimation gif = new SendAnimation();
         String dameX = update.getMessage().getText();
         int resultadoPpt = (int) (Math.random() * 3) + 1;
 
         boolean isMessage = false;
         boolean isPhoto = false;
+        boolean isGif = false;
 
         /*Calendar today = Calendar.getInstance();
         today.set(Calendar.HOUR_OF_DAY, 23);
@@ -91,8 +94,8 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("mudkip")){
-            photo.setPhoto("https://i.giphy.com/media/LIYmzShq9Ahyg/giphy.gif");
-            isPhoto = true;
+            gif.setAnimation("https://i.giphy.com/media/LIYmzShq9Ahyg/giphy.gif");
+            isGif = true;
         }
 
         else if(recogWord.toLowerCase().contains("mejores defensores")){
@@ -726,6 +729,14 @@ public class FabuBot extends TelegramLongPollingBot {
         if(isPhoto == true) {
             try {
                 execute(photo);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(isGif == true) {
+            try {
+                execute(gif);
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
