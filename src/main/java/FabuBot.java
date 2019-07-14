@@ -529,7 +529,7 @@ public class FabuBot extends TelegramLongPollingBot {
 
         else if(recogWord.toLowerCase().contains("añadir poke:")){
             message.setText(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1) + " añadido");
-            writerTexto(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1), "Intercambios.txt");
+            writerTexto(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1), "C:\\Users\\carlo\\IdeaProjects\\FabulandBot\\src\\main\\java\\Intercambios.txt");
 
             isMessage = true;
 
@@ -571,7 +571,7 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("muestra lista poke:")){
-            message.setText(readerLista("Intercambios.txt"));
+            message.setText(readerLista("C:\\Users\\carlo\\IdeaProjects\\FabulandBot\\src\\main\\java\\Intercambios.txt"));
 
             if(vacio == true){
                 message.setText("Lista vacía.");
