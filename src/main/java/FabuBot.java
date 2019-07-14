@@ -90,7 +90,7 @@ public class FabuBot extends TelegramLongPollingBot {
             isMessage = true;
         }
 
-        else if(recogWord.toLowerCase().contains("mejores atacantes")){
+        else if(recogWord.toLowerCase().contains("mudkip")){
             photo.setPhoto("https://i.giphy.com/media/LIYmzShq9Ahyg/giphy.gif");
             isPhoto = true;
         }
