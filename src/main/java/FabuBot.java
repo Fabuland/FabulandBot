@@ -244,7 +244,7 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
-        else if(recogWord.toLowerCase().contains("lapras")){
+        /*else if(recogWord.toLowerCase().contains("lapras")){
 
             message.setText("─────────────────███▓\n" +
                             "─────████───────█────▓\n" +
@@ -272,7 +272,7 @@ public class FabuBot extends TelegramLongPollingBot {
                             "────────█░░▒▒▒▒▒▒█");
             isMessage = true;
 
-        }
+        }*/
 
         else if(recogWord.toLowerCase().contains("funcionan los iv")){
             message.setText("IV significa Valores Individuales (Individual Values)," +
@@ -529,7 +529,7 @@ public class FabuBot extends TelegramLongPollingBot {
 
         else if(recogWord.toLowerCase().contains("añadir poke:")){
             message.setText(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1) + " añadido");
-            writerTexto(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1), "src/main/Java/Intercambios.txt");
+            writerTexto(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1), "Intercambios.txt");
 
             isMessage = true;
 
@@ -561,8 +561,17 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
+        else if(recogWord.toLowerCase().contains("uwu")){
+            message.setText("Warning, the Council of High Intelligence and Educational Findings (C.H.I.E.F.), has" +
+                    " detected an \"uwu\". This is a code BRUH #4 level threat. Stay indoors and do not interact with" +
+                    " cringe weebs until the threat has been classified as not dangerous. Unless the code BRUH is " +
+                    "retracted, \"uwu\" will be classified under \"extremely cringy\" until further notice.");
+            isMessage = true;
+
+        }
+
         else if(recogWord.toLowerCase().contains("muestra lista poke:")){
-            message.setText(readerLista("src/main/Java/Intercambios.txt"));
+            message.setText(readerLista("Intercambios.txt"));
 
             if(vacio == true){
                 message.setText("Lista vacía.");
