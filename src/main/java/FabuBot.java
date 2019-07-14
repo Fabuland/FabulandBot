@@ -29,7 +29,7 @@ public class FabuBot extends TelegramLongPollingBot {
         String recogWord = update.getMessage().getText();
         SendMessage message = new SendMessage();
         SendPhoto photo = new SendPhoto();
-        SendVideo gif = new SendVideo();
+        SendAnimation gif = new SendAnimation();
         String dameX = update.getMessage().getText();
         int resultadoPpt = (int) (Math.random() * 3) + 1;
 
@@ -95,7 +95,7 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("mudkip")){
-            gif.setVideo("https://i.giphy.com/media/LIYmzShq9Ahyg/giphy.gif");
+            gif.setAnimation("https://media1.giphy.com/media/BG4rps53LGPzW/giphy.gif");
             isGif = true;
         }
 
