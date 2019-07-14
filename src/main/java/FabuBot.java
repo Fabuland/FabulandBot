@@ -2,6 +2,7 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendAnimation;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
+import org.telegram.telegrambots.meta.api.methods.send.SendVideo;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
@@ -28,7 +29,7 @@ public class FabuBot extends TelegramLongPollingBot {
         String recogWord = update.getMessage().getText();
         SendMessage message = new SendMessage();
         SendPhoto photo = new SendPhoto();
-        SendAnimation gif = new SendAnimation();
+        SendVideo gif = new SendVideo();
         String dameX = update.getMessage().getText();
         int resultadoPpt = (int) (Math.random() * 3) + 1;
 
@@ -94,7 +95,7 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("mudkip")){
-            gif.setAnimation("https://i.giphy.com/media/LIYmzShq9Ahyg/giphy.gif");
+            gif.setVideo("https://i.giphy.com/media/LIYmzShq9Ahyg/giphy.gif");
             isGif = true;
         }
 
