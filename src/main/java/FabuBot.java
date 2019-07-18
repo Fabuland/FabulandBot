@@ -540,7 +540,7 @@ public class FabuBot extends TelegramLongPollingBot {
 
         else if(recogWord.toLowerCase().contains("añadir poke:")){
             message.setText(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1) + " añadido");
-            writerTexto(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1), "src\\main\\java\\Intercambios.txt");
+            writerTexto(update.getMessage().getText().substring(update.getMessage().getText().lastIndexOf(":") + 1), "src/main/java/Intercambios.txt");
 
             isMessage = true;
 
