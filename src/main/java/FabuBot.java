@@ -488,6 +488,49 @@ public class FabuBot extends TelegramLongPollingBot {
             isMessage = true;
         }
 
+        else if(recogWord.toLowerCase().contains("simular raid") && recogWord.toLowerCase().contains("nivel") && recogWord.toLowerCase().contains("amistad")
+                && recogWord.toLowerCase().contains("clima")){
+            String mensaje = update.getMessage().getText();
+            int ind1 = mensaje.indexOf(' ');
+            int ind2 = mensaje.indexOf(' ', ind1 + 1);
+            int ind3 = mensaje.indexOf(' ', ind2 + 1);
+            int ind4 = mensaje.indexOf(' ', ind3 + 1);
+            int ind5 = mensaje.indexOf(' ', ind4 + 1);
+            int ind6 = mensaje.indexOf(' ', ind5 + 1);
+            int ind7 = mensaje.indexOf(' ', ind6 + 1);
+            int ind8 = mensaje.indexOf(' ', ind7 + 1);
+            int ind9 = mensaje.indexOf(' ', ind8 + 1);
+
+            String simulPoke = mensaje.substring(ind2, ind3).trim().toUpperCase();
+            String tierPoke = mensaje.substring(ind3, ind4).trim();
+            String nivelPoke = mensaje.substring(ind5, ind6).trim();
+            String amistadPoke = mensaje.substring(ind7, ind8).trim();
+            String climaPoke = mensaje.substring(ind9).trim().toLowerCase();
+            String climaIngles = "";
+
+            if(climaPoke.equals("neutro")){
+                climaIngles = "NO_WEATHER";
+            }else if(climaPoke.equals("soleado")){
+                climaIngles = "CLEAR";
+            }else if(climaPoke.equals("lluvioso")){
+                climaIngles = "RAINY";
+            }else if(climaPoke.equals("parcialmentenublado")){
+                climaIngles = "PARTLY_CLOUDY";
+            }else if(climaPoke.equals("viento")){
+                climaIngles = "WINDY";
+            }else if(climaPoke.equals("nieve")){
+                climaIngles = "SNOW";
+            }else if(climaPoke.equals("niebla")){
+                climaIngles = "FOG";
+            }
+
+
+            message.setText("https://www.pokebattler.com/raids/defenders/"+simulPoke+"/levels/RAID_LEVEL_"+tierPoke+"/" +
+                    "attackers/levels/"+nivelPoke+"/strategies/CINEMATIC_ATTACK_WHEN_POSSIBLE/DEFENSE_RANDOM_MC?sort=TIME&weatherCondition="+climaIngles+"&dodgeStrategy" +
+                    "=DODGE_REACTION_TIME&aggregation=AVERAGE&randomAssistants=-1&friendLevel=FRIENDSHIP_LEVEL_"+amistadPoke+"");
+
+        }
+
         else if(recogWord.toLowerCase().contains("funciona la simulación")){
             message.setText("Si escribes \"Simular Vigoroth vs Yanma 0 1\" por ejemplo, te mandaré un link a pvpoke.com con la simulación " +
                     "entre esos dos Pokémon, 0 1 es el número de escudos, siendo 0 para Vigoroth y 1 para Yanma.\nSi escribes mal el nombre de un Pokémon " +
