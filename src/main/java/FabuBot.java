@@ -488,7 +488,7 @@ public class FabuBot extends TelegramLongPollingBot {
             isMessage = true;
         }
 
-        else if(recogWord.toLowerCase().contains("simular raid") && recogWord.toLowerCase().contains("nivel") && recogWord.toLowerCase().contains("amistad")
+        else if(recogWord.toLowerCase().contains("simular") && recogWord.toLowerCase().contains("raid") && recogWord.toLowerCase().contains("nivel") && recogWord.toLowerCase().contains("amistad")
                 && recogWord.toLowerCase().contains("clima")){
             String mensaje = update.getMessage().getText();
             int ind1 = mensaje.indexOf(' ');
