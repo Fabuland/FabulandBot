@@ -477,6 +477,18 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
+        else if(recogWord.toLowerCase().contains("info") && recogWord.toLowerCase().contains("poke")){
+            String mensaje = update.getMessage().getText();
+            int ind1 = mensaje.indexOf(' ');
+            int ind2 = mensaje.indexOf(' ', ind1 + 1);
+            int ind3 = mensaje.indexOf(' ', ind2 + 1);
+            String infoPoke = mensaje.substring(ind2, ind3).trim().toLowerCase();
+
+            message.setText("https://pokemon.gameinfo.io/es/pokemon/"+ infoPoke +"");
+
+            isMessage = true;
+        }
+
         else if(recogWord.toLowerCase().contains("funciona la simulación")){
             message.setText("Si escribes \"Simular Vigoroth vs Yanma 0 1\" por ejemplo, te mandaré un link a pvpoke.com con la simulación " +
                     "entre esos dos Pokémon, 0 1 es el número de escudos, siendo 0 para Vigoroth y 1 para Yanma.\nSi escribes mal el nombre de un Pokémon " +
