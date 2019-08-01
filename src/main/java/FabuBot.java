@@ -201,7 +201,9 @@ public class FabuBot extends TelegramLongPollingBot {
                     "\uD83D\uDD30 Páginas de utilidad\n" +
                     " ⚔ Simular pokemon vs pokemon\n" +
                     "\uD83D\uDD30 Cómo funciona la simulación\n" +
-                    "\uD83D\uDD30 Info Poke xxxxxx\n" +
+                    "\uD83D\uDD30 Info Poke Pokemon\n" +
+                    "\uD83D\uDD30 Simular raid Pokemon Tier Nivel xx Amistad xx Clima xxxxxx\n" +
+                    "\uD83D\uDD30 Cómo funciona la simulación de raids\n" +
                     "\n" +
                     "Se irán actualizando");
             isMessage = true;
@@ -516,6 +518,8 @@ public class FabuBot extends TelegramLongPollingBot {
                 climaIngles = "RAINY";
             }else if(climaPoke.equals("parcialmentenublado")){
                 climaIngles = "PARTLY_CLOUDY";
+            }else if(climaPoke.equals("nublado")){
+                climaIngles = "OVERCAST";
             }else if(climaPoke.equals("viento")){
                 climaIngles = "WINDY";
             }else if(climaPoke.equals("nieve")){
@@ -526,6 +530,21 @@ public class FabuBot extends TelegramLongPollingBot {
 
 
             message.setText("https://www.pokebattler.com/raids/defenders/"+simulPoke+"/levels/RAID_LEVEL_"+tierPoke+"/attackers/levels/"+nivelPoke+"/strategies/CINEMATIC_ATTACK_WHEN_POSSIBLE/DEFENSE_RANDOM_MC?sort=TIME&weatherCondition="+climaIngles+"&dodgeStrategy=DODGE_REACTION_TIME&aggregation=AVERAGE&randomAssistants=-1&friendLevel=FRIENDSHIP_LEVEL_"+amistadPoke);
+
+            isMessage = true;
+        }
+
+        else if(recogWord.toLowerCase().contains("funciona") && recogWord.toLowerCase().contains("raids")){
+
+            message.setText("Para usar el simulador de raids escribe un mensaje parecido a este, pero con los datos que necesites: \n" +
+                    "Simular raid Rayquaza 5 nivel 40 amistad 4 clima neutro\n" +
+                    "Rayquaza --> El Pokémon de raid que quieras simular\n" +
+                    "40 --> El nivel de tus Pokémon\n" +
+                    "4 --> Nivel de amistad con la gente de la raid\n" +
+                    "neutro --> Clima\n" +
+                    "Los climas disponibles son: neutro, soleado, lluvioso, parcialmentenublado, nublado, viento, nieve y niebla.");
+
+            isMessage = true;
 
         }
 
