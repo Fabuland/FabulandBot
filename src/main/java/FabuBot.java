@@ -525,9 +525,7 @@ public class FabuBot extends TelegramLongPollingBot {
             }
 
 
-            message.setText("https://www.pokebattler.com/raids/defenders/"+simulPoke+"/levels/RAID_LEVEL_"+tierPoke+"/" +
-                    "attackers/levels/"+nivelPoke+"/strategies/CINEMATIC_ATTACK_WHEN_POSSIBLE/DEFENSE_RANDOM_MC?sort=TIME&weatherCondition="+climaIngles+"&dodgeStrategy" +
-                    "=DODGE_REACTION_TIME&aggregation=AVERAGE&randomAssistants=-1&friendLevel=FRIENDSHIP_LEVEL_"+amistadPoke+"");
+            message.setText("https://www.pokebattler.com/raids/defenders/"+simulPoke+"/levels/RAID_LEVEL_"+tierPoke+"/attackers/levels/"+nivelPoke+"/strategies/CINEMATIC_ATTACK_WHEN_POSSIBLE/DEFENSE_RANDOM_MC?sort=TIME&weatherCondition="+climaIngles+"&dodgeStrategy=DODGE_REACTION_TIME&aggregation=AVERAGE&randomAssistants=-1&friendLevel=FRIENDSHIP_LEVEL_"+amistadPoke);
 
         }
 
@@ -621,7 +619,7 @@ public class FabuBot extends TelegramLongPollingBot {
 
         else if(recogWord.toLowerCase().contains("probar variables")){
 
-            message.setText("https://www.pokebattler.com/raids/defenders/RAYQUAZA/levels/RAID_LEVEL_5/attackers/levels/40/strategies/CINEMATIC_ATTACK_WHEN_POSSIBLE/DEFENSE_RANDOM_MC?sort=TIME&weatherCondition=NO_WEATHER&dodgeStrategy=DODGE_REACTION_TIME&aggregation=AVERAGE&randomAssistants=-1&friendLevel=FRIENDSHIP_LEVEL_4");
+            message.setText("xd");
             isMessage = true;
 
         }
