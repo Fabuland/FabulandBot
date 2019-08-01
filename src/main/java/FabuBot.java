@@ -620,8 +620,8 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("probar variables")){
-            n++;
-            message.setText(n+"");
+
+            message.setText("actualiza");
             isMessage = true;
 
         }
