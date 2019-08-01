@@ -94,11 +94,11 @@ public class FabuBot extends TelegramLongPollingBot {
             isMessage = true;
         }
 
-        else if(recogWord.toLowerCase().contains("mudkip")){
+        /*else if(recogWord.toLowerCase().contains("mudkip")){
             gif.setChatId(update.getMessage().getChatId());
             gif.setAnimation("https://media1.giphy.com/media/BG4rps53LGPzW/giphy.gif");
             isGif = true;
-        }
+        }*/
 
         else if(recogWord.toLowerCase().contains("mejores defensores")){
             message.setText("Siempre Blissey");
@@ -201,7 +201,7 @@ public class FabuBot extends TelegramLongPollingBot {
                     "\uD83D\uDD30 Páginas de utilidad\n" +
                     " ⚔ Simular pokemon vs pokemon\n" +
                     "\uD83D\uDD30 Cómo funciona la simulación\n" +
-                    "\uD83D\uDD30 Día de Entei\n" +
+                    "\uD83D\uDD30 Info Poke xxxxxx\n" +
                     "\n" +
                     "Se irán actualizando");
             isMessage = true;
@@ -218,8 +218,7 @@ public class FabuBot extends TelegramLongPollingBot {
                             "\uD83D\uDD30 Muestra lista poke:\n" +
                             "\uD83D\uDD30 Fabubot malo\n" +
                             "\uD83D\uDD30 Fabubot mata a -----\n" +
-                            "\uD83D\uDD30 Mudkip\n" +
-                            "\uD83D\uDD30 Hola Fabubot!" +
+                            "\uD83D\uDD30 Hola Fabubot!\n" +
                             "\uD83D\uDD30 uwu");
             isMessage = true;
         }
@@ -482,7 +481,7 @@ public class FabuBot extends TelegramLongPollingBot {
             int ind1 = mensaje.indexOf(' ');
             int ind2 = mensaje.indexOf(' ', ind1 + 1);
             int ind3 = mensaje.indexOf(' ', ind2 + 1);
-            String infoPoke = mensaje.substring(ind2, ind3).trim().toLowerCase();
+            String infoPoke = mensaje.substring(ind2).trim().toLowerCase();
 
             message.setText("https://pokemon.gameinfo.io/es/pokemon/"+ infoPoke +"");
 
