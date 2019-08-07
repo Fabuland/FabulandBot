@@ -537,7 +537,7 @@ public class FabuBot extends TelegramLongPollingBot {
         else if(recogWord.toLowerCase().contains("funciona") && recogWord.toLowerCase().contains("raids")){
 
             message.setText("Para usar el simulador de raids escribe un mensaje parecido a este, pero con los datos que necesites: \n" +
-                    "Simular raid Rayquaza 5 nivel 40 amistad 4 clima neutro\n" +
+                    "**Simular raid Rayquaza 5 nivel 40 amistad 4 clima neutro**\n" +
                     "Rayquaza --> El Pokémon de raid que quieras simular\n" +
                     "40 --> El nivel de tus Pokémon\n" +
                     "4 --> Nivel de amistad con la gente de la raid\n" +
@@ -602,8 +602,13 @@ public class FabuBot extends TelegramLongPollingBot {
                 photo.setPhoto("https://i.imgur.com/eRBns9M.jpg");
                 isPhoto = true;
 
+            }else if(nChistes == 4){
+                photo.setPhoto("https://i.imgur.com/VJpa5L3.png");
+                isPhoto = true;
+
             }
-            if(nChistes == 3){
+
+            if(nChistes == 4){
                 nChistes = 0;
             }
 
