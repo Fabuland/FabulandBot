@@ -607,8 +607,13 @@ public class FabuBot extends TelegramLongPollingBot {
                 isPhoto = true;
 
             }
+            else if(nChistes == 5){
+                photo.setPhoto("https://i.imgur.com/Gbgb3sq.jpg");
+                isPhoto = true;
 
-            if(nChistes == 4){
+            }
+
+            if(nChistes == 5){
                 nChistes = 0;
             }
 
