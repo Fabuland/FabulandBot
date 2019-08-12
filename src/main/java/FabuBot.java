@@ -221,7 +221,8 @@ public class FabuBot extends TelegramLongPollingBot {
                             "\uD83D\uDD30 Fabubot malo\n" +
                             "\uD83D\uDD30 Fabubot mata a -----\n" +
                             "\uD83D\uDD30 Hola Fabubot!\n" +
-                            "\uD83D\uDD30 uwu");
+                            "\uD83D\uDD30 uwu\n" +
+                            "\uD83D\uDD30 FabuHora");
             isMessage = true;
         }
 
@@ -642,6 +643,16 @@ public class FabuBot extends TelegramLongPollingBot {
 
             borrado = false;
 
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("fabuhora")){
+
+            String s = String.valueOf(java.time.LocalTime.now());
+            String horaRecortada = s.substring(0, Math.min(s.length(), 8));
+
+            message.setText(horaRecortada+"");
             isMessage = true;
 
         }
