@@ -41,7 +41,7 @@ public class FabuBot extends TelegramLongPollingBot {
 
         Object[] poleInt = new Object[1];
 
-        ResultSet getPole = Conectar.EjecutarSentencia("SELECT * FROM polereset ORDER BY PoleReset");
+        /*ResultSet getPole = Conectar.EjecutarSentencia("SELECT * FROM polereset ORDER BY PoleReset");
         try {
             while (getPole.next()) {
 
@@ -50,7 +50,7 @@ public class FabuBot extends TelegramLongPollingBot {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
 
         Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
 
@@ -940,7 +940,7 @@ public class FabuBot extends TelegramLongPollingBot {
 
     public void actualizarBaseDatos(String polereset) {
 
-        Conectar.EjecutarUpdate("UPDATE polereset SET polereset = \"" + polereset + "\";");
+        //Conectar.EjecutarUpdate("UPDATE polereset SET polereset = \"" + polereset + "\";");
 
     }
 
