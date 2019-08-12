@@ -649,8 +649,12 @@ public class FabuBot extends TelegramLongPollingBot {
 
         else if(recogWord.toLowerCase().contains("fabuhora")){
 
-            String s = String.valueOf(java.time.LocalTime.now());
-            String horaRecortada = s.substring(0, Math.min(s.length(), 8));
+            Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
+
+            DateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+            formatter.setTimeZone(TimeZone.getTimeZone("GMT+2"));
+
+            String horaRecortada = formatter.format(calendar.getTime());
 
             message.setText(horaRecortada+"");
             isMessage = true;
