@@ -7,6 +7,8 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -36,6 +38,34 @@ public class FabuBot extends TelegramLongPollingBot {
         boolean isMessage = false;
         boolean isPhoto = false;
         boolean isGif = false;
+
+        Object[] poleInt = new Object[1];
+
+        ResultSet getPole = Conectar.EjecutarSentencia("SELECT * FROM polereset ORDER BY PoleReset");
+        try {
+            while (getPole.next()) {
+
+            poleInt[0] = getPole.getInt("polereset");
+            System.out.println("funciona");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
+
+        DateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+        formatter.setTimeZone(TimeZone.getTimeZone("GMT+2"));
+
+        String horaActual = formatter.format(calendar.getTime());
+
+        String horaString = horaActual.substring(0, Math.min(horaActual.length(), 2));
+        int horaInt = Integer.parseInt(horaString);
+
+        if(horaInt == 23){
+            actualizarBaseDatos("0");
+        }
+
 
         /*Calendar today = Calendar.getInstance();
         today.set(Calendar.HOUR_OF_DAY, 23);
@@ -222,7 +252,8 @@ public class FabuBot extends TelegramLongPollingBot {
                             "\uD83D\uDD30 Fabubot mata a -----\n" +
                             "\uD83D\uDD30 Hola Fabubot!\n" +
                             "\uD83D\uDD30 uwu\n" +
-                            "\uD83D\uDD30 FabuHora");
+                            "\uD83D\uDD30 FabuHora\n" +
+                            "\uD83D\uDD30 FabuPole (a partir de las 7:00 y 16:00)");
             isMessage = true;
         }
 
@@ -557,6 +588,12 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
+        else if(recogWord.toLowerCase().contains("senorivan rayquaza")){
+            photo.setPhoto("https://i.imgur.com/ifCWjp3.jpg");
+            isPhoto = true;
+
+        }
+
         else if(recogWord.toLowerCase().contains("funciona la simulacion")){
             message.setText("Si escribes \"Simular Vigoroth vs Yanma 0 1\" por ejemplo, te mandaré un link a pvpoke.com con la simulación " +
                     "entre esos dos Pokémon, 0 1 es el número de escudos, siendo 0 para Vigoroth y 1 para Yanma.\nSi escribes mal el nombre de un Pokémon " +
@@ -649,15 +686,33 @@ public class FabuBot extends TelegramLongPollingBot {
 
         else if(recogWord.toLowerCase().contains("fabuhora")){
 
-            Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
+            calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
 
-            DateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+            formatter = new SimpleDateFormat("HH:mm:ss");
             formatter.setTimeZone(TimeZone.getTimeZone("GMT+2"));
 
             String horaRecortada = formatter.format(calendar.getTime());
 
             message.setText(horaRecortada+"");
             isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("fabupole")){
+
+            if(((horaInt > 6 && horaInt < 10) || (horaInt > 15 && horaInt < 19)) && poleInt[0].equals("0")){
+                actualizarBaseDatos("1");
+                String fabuPole = update.getMessage().getFrom().getFirstName() + " ha hecho la FabuPole! Los demás sois unos dormilones";
+                message.setText(fabuPole+"");
+                isMessage = true;
+
+            }else{
+                String fabuPoleTarde = "Tarde, se te han adelantado. Prueba a dejar de dormir tanto y levanta Españita.";
+                message.setText(fabuPoleTarde+"");
+                isMessage = true;
+            }
+
+
 
         }
 
@@ -881,6 +936,12 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         return existe;
+    }
+
+    public void actualizarBaseDatos(String polereset) {
+
+        Conectar.EjecutarUpdate("UPDATE polereset SET polereset = \"" + polereset + "\";");
+
     }
 
     public String readerLista(String archivo){
