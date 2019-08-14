@@ -538,7 +538,7 @@ public class FabuBot extends TelegramLongPollingBot {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            message.setText("Puesto "+ rangoPoke +"");
+            message.setText("⚔ Puesto "+ rangoPoke +" ⚔");
             isMessage = true;
 
         }
