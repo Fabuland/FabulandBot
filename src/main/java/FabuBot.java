@@ -510,6 +510,22 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
+        else if(recogWord.toLowerCase().contains("rank puesto")){
+            String mensaje = update.getMessage().getText();
+            int ind1 = mensaje.indexOf(' ');
+            int ind2 = mensaje.indexOf(' ', ind1 + 1);
+            int ind3 = mensaje.indexOf(' ', ind2 + 1);
+            int ind4 = mensaje.indexOf(' ', ind3 + 1);
+            int ind5 = mensaje.indexOf(' ', ind4 + 1);
+            String pokeRank = mensaje.substring(ind2, ind3).trim().toLowerCase();
+            String ivAt = mensaje.substring(ind3, ind4).trim().toLowerCase();
+            String ivDef = mensaje.substring(ind4, ind5).trim().toLowerCase();
+            String ivSta = mensaje.substring(ind5).trim().toLowerCase();
+            message.setText("https://gostadium.club/pvp/iv?pokemon="+ pokeRank +"&max_cp=1500&min_iv=0&att_iv="+ivAt+"&def_iv="+ivDef+"&sta_iv="+ivSta+"");
+            isMessage = true;
+
+        }
+
         else if(recogWord.toLowerCase().contains("info") && recogWord.toLowerCase().contains("poke")){
             String mensaje = update.getMessage().getText();
             int ind1 = mensaje.indexOf(' ');
@@ -698,7 +714,7 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
-        else if(recogWord.toLowerCase().contains("fabupole")){
+        /*else if(recogWord.toLowerCase().contains("fabupole")){
 
             if(((horaInt > 6 && horaInt < 10) || (horaInt > 15 && horaInt < 19)) && poleInt[0].equals("0")){
                 actualizarBaseDatos("1");
@@ -714,7 +730,7 @@ public class FabuBot extends TelegramLongPollingBot {
 
 
 
-        }
+        }*/
 
         else if(recogWord.toLowerCase().contains("probar variables")){
 
