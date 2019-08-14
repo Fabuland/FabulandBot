@@ -2,18 +2,21 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendAnimation;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
-import org.telegram.telegrambots.meta.api.methods.send.SendVideo;
+
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.*;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.text.DateFormat;
-import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 
 public class FabuBot extends TelegramLongPollingBot {
 
@@ -234,6 +237,7 @@ public class FabuBot extends TelegramLongPollingBot {
                     "\uD83D\uDD30 Info Poke Pokemon\n" +
                     "\uD83D\uDD30 Simular raid Pokemon Tier Nivel xx Amistad xx Clima xxxxxx\n" +
                     "\uD83D\uDD30 Cómo funciona la simulación de raids\n" +
+                    "\uD83D\uDD30 Rank puesto Pokemon ivAtaque ivDefensa ivStamina\n" +
                     "\n" +
                     "Se irán actualizando");
             isMessage = true;
@@ -521,7 +525,20 @@ public class FabuBot extends TelegramLongPollingBot {
             String ivAt = mensaje.substring(ind3, ind4).trim().toLowerCase();
             String ivDef = mensaje.substring(ind4, ind5).trim().toLowerCase();
             String ivSta = mensaje.substring(ind5).trim().toLowerCase();
-            message.setText("https://gostadium.club/pvp/iv?pokemon="+ pokeRank +"&max_cp=1500&min_iv=0&att_iv="+ivAt+"&def_iv="+ivDef+"&sta_iv="+ivSta+"");
+            String rangoPoke = "";
+            try {
+                Document doc = Jsoup.connect("https://gostadium.club/pvp/iv?pokemon="+ pokeRank +"&max_cp=1500&min_iv=0&att_iv="+ivAt+"&def_iv="+ivDef+"&sta_iv="+ivSta+"").userAgent("mozilla/17.0").get();
+                Elements temp = doc.select("div.well");
+                int i = 0;
+                for(Element rankIV:temp){
+                    i++;
+                    rangoPoke = rankIV.getElementsByTag("b").first().text();
+                }
+                System.out.println(rangoPoke);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            message.setText("Puesto "+ rangoPoke +"");
             isMessage = true;
 
         }
