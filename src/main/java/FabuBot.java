@@ -543,7 +543,7 @@ public class FabuBot extends TelegramLongPollingBot {
             int ind2 = mensaje.indexOf(' ', ind1 + 1);
             int ind3 = mensaje.indexOf(' ', ind2 + 1);
             int ind4 = mensaje.indexOf(' ', ind3 + 1);
-            String ligaPoke = mensaje.substring(ind4).trim().toLowerCase();
+            String ligaPoke = mensaje.substring(ind2, ind3).trim().toLowerCase();
             String ligaTrad = "";
             if(ligaPoke.equals("super") || ligaPoke.equals("súper")){
                 ligaTrad = "1500";
@@ -552,7 +552,7 @@ public class FabuBot extends TelegramLongPollingBot {
             }else if(ligaPoke.equals("master")){
                 ligaTrad = "9001";
             }
-            String pokeRank = mensaje.substring(ind2, ind3).trim().toLowerCase();
+            String pokeRank = mensaje.substring(ind3).trim().toLowerCase();
             String rangoPoke = "";
             try {
                 Document doc = Jsoup.connect("https://gostadium.club/pvp/iv?pokemon="+ pokeRank +"&max_cp="+ ligaTrad+"").userAgent("mozilla/17.0").get();
