@@ -221,6 +221,7 @@ public class FabuBot extends TelegramLongPollingBot {
                     "\uD83D\uDD30 Simular raid Pokemon Tier Nivel xx Amistad xx Clima xxxxxx\n" +
                     "\uD83D\uDD30 Cómo funciona la simulación de raids\n" +
                     "\uD83D\uDD30 Rank **liga** Pokemon ivAtaque ivDefensa ivStamina\n" +
+                    "\uD83D\uDD30 Mejor puesto **liga** Pokemon\n" +
                     "\n" +
                     "Se irán actualizando");
             isMessage = true;
@@ -532,6 +533,40 @@ public class FabuBot extends TelegramLongPollingBot {
                 e.printStackTrace();
             }
             message.setText("⚔ Puesto "+ rangoPoke +" ⚔");
+            isMessage = true;
+
+        }
+
+        else if(recogWord.toLowerCase().contains("mejor puesto") && (recogWord.toLowerCase().contains("super") || recogWord.toLowerCase().contains("súper") || recogWord.toLowerCase().contains("ultra") || recogWord.toLowerCase().contains("master"))){
+            String mensaje = update.getMessage().getText();
+            int ind1 = mensaje.indexOf(' ');
+            int ind2 = mensaje.indexOf(' ', ind1 + 1);
+            int ind3 = mensaje.indexOf(' ', ind2 + 1);
+            String ligaPoke = mensaje.substring(ind3).trim().toLowerCase();
+            String ligaTrad = "";
+            if(ligaPoke.equals("super") || ligaPoke.equals("súper")){
+                ligaTrad = "1500";
+            }else if (ligaPoke.equals("ultra")){
+                ligaTrad = "2500";
+            }else if(ligaPoke.equals("master")){
+                ligaTrad = "9001";
+            }
+            String[] rangoArray = {};
+            String pokeRank = mensaje.substring(ind2, ind3).trim().toLowerCase();
+            String rangoPoke = "";
+            try {
+                Document doc = Jsoup.connect("https://gostadium.club/pvp/iv?pokemon="+ pokeRank +"&max_cp="+ ligaTrad+"").userAgent("mozilla/17.0").get();
+                Elements temp = doc.select("div.well");
+                int i = 0;
+                for(Element rankIV:temp){
+                    i++;
+                    rangoPoke = rankIV.getElementsByTag("td").first().text();
+                }
+                rangoArray = rangoPoke.split(" ");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            message.setText("⚔ " + rangoArray[15] + "/" + rangoArray[17] + "/" + rangoArray[19] + " ⚔");
             isMessage = true;
 
         }
