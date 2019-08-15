@@ -542,7 +542,8 @@ public class FabuBot extends TelegramLongPollingBot {
             int ind1 = mensaje.indexOf(' ');
             int ind2 = mensaje.indexOf(' ', ind1 + 1);
             int ind3 = mensaje.indexOf(' ', ind2 + 1);
-            String ligaPoke = mensaje.substring(ind3).trim().toLowerCase();
+            int ind4 = mensaje.indexOf(' ', ind3 + 1);
+            String ligaPoke = mensaje.substring(ind4).trim().toLowerCase();
             String ligaTrad = "";
             if(ligaPoke.equals("super") || ligaPoke.equals("súper")){
                 ligaTrad = "1500";
@@ -551,7 +552,6 @@ public class FabuBot extends TelegramLongPollingBot {
             }else if(ligaPoke.equals("master")){
                 ligaTrad = "9001";
             }
-            String[] rangoArray = {};
             String pokeRank = mensaje.substring(ind2, ind3).trim().toLowerCase();
             String rangoPoke = "";
             try {
@@ -560,12 +560,13 @@ public class FabuBot extends TelegramLongPollingBot {
                 int i = 0;
                 for(Element rankIV:temp){
                     i++;
-                    rangoPoke = rankIV.getElementsByTag("td").first().text();
+                    rangoPoke = rankIV.getElementsByTag("td").text();
                 }
-                rangoArray = rangoPoke.split(" ");
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            String[] rangoArray = rangoPoke.split(" ");
             message.setText("⚔ " + rangoArray[15] + "/" + rangoArray[17] + "/" + rangoArray[19] + " ⚔");
             isMessage = true;
 
