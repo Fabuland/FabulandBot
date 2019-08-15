@@ -487,12 +487,23 @@ public class FabuBot extends TelegramLongPollingBot {
             int ind3 = mensaje.indexOf(' ', ind2 + 1);
             int ind4 = mensaje.indexOf(' ', ind3 + 1);
             int ind5 = mensaje.indexOf(' ', ind4 + 1);
-            String primerPoke = mensaje.substring(ind1, ind2).trim().toLowerCase();
-            String segundoPoke = mensaje.substring(ind3, ind4).trim().toLowerCase();
-            String primerEscudo = mensaje.substring(ind4, ind5).trim();
-            String segundoEscudo = mensaje.substring(ind5).trim();
+            int ind6 = mensaje.indexOf(' ', ind5 + 1);
 
-            message.setText("https://pvpoke.com/battle/1500/"+ primerPoke +"/"+ segundoPoke +"/"+ primerEscudo +""+ segundoEscudo +"/");
+            String ligaPoke = mensaje.substring(ind1, ind2).trim().toLowerCase();
+            String ligaTrad = "";
+            if(ligaPoke.equals("super") || ligaPoke.equals("súper")){
+                ligaTrad = "1500";
+            }else if (ligaPoke.equals("ultra")){
+                ligaTrad = "2500";
+            }else if(ligaPoke.equals("master")){
+                ligaTrad = "9001";
+            }
+            String primerPoke = mensaje.substring(ind2, ind3).trim().toLowerCase();
+            String segundoPoke = mensaje.substring(ind4, ind5).trim().toLowerCase();
+            String primerEscudo = mensaje.substring(ind5, ind6).trim();
+            String segundoEscudo = mensaje.substring(ind6).trim();
+
+            message.setText("https://pvpoke.com/battle/"+ ligaTrad +"/"+ primerPoke +"/"+ segundoPoke +"/"+ primerEscudo +""+ segundoEscudo +"/");
 
             isMessage = true;
 
