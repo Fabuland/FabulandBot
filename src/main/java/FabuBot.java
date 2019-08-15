@@ -496,7 +496,7 @@ public class FabuBot extends TelegramLongPollingBot {
             }else if (ligaPoke.equals("ultra")){
                 ligaTrad = "2500";
             }else if(ligaPoke.equals("master")){
-                ligaTrad = "9001";
+                ligaTrad = "10000";
             }
             String primerPoke = mensaje.substring(ind2, ind3).trim().toLowerCase();
             String segundoPoke = mensaje.substring(ind4, ind5).trim().toLowerCase();
