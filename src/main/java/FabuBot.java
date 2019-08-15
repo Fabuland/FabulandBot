@@ -138,21 +138,6 @@ public class FabuBot extends TelegramLongPollingBot {
             isMessage = true;
         }
 
-        else if(recogWord.toLowerCase().contains("cae mewtwo")){
-            message.setText("Entre 3 si hay counters al 40/35+ (complicado)\n" +
-                    "Entre 4 si hay counters al 30+\nEntre 5 con counters al 20+\n" +
-                    "Importa mucho que llevéis los counters adecuados como Giratina Origen o " +
-                    "Gengar Legacy para hacerlo entre pocos, si no tenéis equipo harán falta 5-6 ");
-            isMessage = true;
-
-        }
-
-        else if(recogWord.toLowerCase().contains("counters para mewtwo")){
-            message.setText("En clima neutro y a lvl 30 son (en este orden): \nGiratina Origen, Gengar (legacy), " +
-                    "Tyranitar, Weavile, Mewtwo (bola sombra), Banette, Honchkrow, Houndoom, Absol, Pinsir.");
-            isMessage = true;
-        }
-
         else if(recogWord.toLowerCase().contains("cae una t4")){
             message.setText("Para hacer una T4 actualmente hacen falta un mínimo de 2 personas. Raids como " +
                     "Tyranitar o Absol son relativamente fáciles siendo necesarios sólo amistad y Machamps " +
@@ -220,8 +205,6 @@ public class FabuBot extends TelegramLongPollingBot {
                     "\uD83D\uDD30 Mejores defensores\n" +
                     "\uD83D\uDD30 Cómo funcionan los IV?\n" +
                     "\uD83D\uDD30 A qué hora empieza el CD\n" +
-                    "\uD83D\uDD30 Con cuántos cae Mewtwo armadura?\n" +
-                    "\uD83D\uDD30 Counters para Mewtwo armadura\n" +
                     "\uD83D\uDD30 Con cuántos cae Deoxys velocidad?\n" +
                     "\uD83D\uDD30 Counters para Deoxys velocidad\n" +
                     "\uD83D\uDD30 Coste de polvos y caramelos\n" +
@@ -237,7 +220,7 @@ public class FabuBot extends TelegramLongPollingBot {
                     "\uD83D\uDD30 Info Poke Pokemon\n" +
                     "\uD83D\uDD30 Simular raid Pokemon Tier Nivel xx Amistad xx Clima xxxxxx\n" +
                     "\uD83D\uDD30 Cómo funciona la simulación de raids\n" +
-                    "\uD83D\uDD30 Rank puesto Pokemon ivAtaque ivDefensa ivStamina\n" +
+                    "\uD83D\uDD30 Rank **liga** Pokemon ivAtaque ivDefensa ivStamina\n" +
                     "\n" +
                     "Se irán actualizando");
             isMessage = true;
@@ -514,7 +497,7 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
-        else if(recogWord.toLowerCase().contains("rank") && (recogWord.toLowerCase().contains("super") || recogWord.toLowerCase().contains("ultra") || recogWord.toLowerCase().contains("master"))){
+        else if(recogWord.toLowerCase().contains("rank") && (recogWord.toLowerCase().contains("super") || recogWord.toLowerCase().contains("súper") || recogWord.toLowerCase().contains("ultra") || recogWord.toLowerCase().contains("master"))){
             String mensaje = update.getMessage().getText();
             int ind1 = mensaje.indexOf(' ');
             int ind2 = mensaje.indexOf(' ', ind1 + 1);
@@ -523,7 +506,7 @@ public class FabuBot extends TelegramLongPollingBot {
             int ind5 = mensaje.indexOf(' ', ind4 + 1);
             String ligaPoke = mensaje.substring(ind1, ind2).trim().toLowerCase();
             String ligaTrad = "";
-            if(ligaPoke.equals("super")){
+            if(ligaPoke.equals("super") || ligaPoke.equals("súper")){
                 ligaTrad = "1500";
             }else if (ligaPoke.equals("ultra")){
                 ligaTrad = "2500";
