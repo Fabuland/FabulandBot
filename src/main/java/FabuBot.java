@@ -221,7 +221,7 @@ public class FabuBot extends TelegramLongPollingBot {
                     "\uD83D\uDD30 Simular raid Pokemon Tier Nivel xx Amistad xx Clima xxxxxx\n" +
                     "\uD83D\uDD30 Cómo funciona la simulación de raids\n" +
                     "\uD83D\uDD30 Rank **liga** Pokemon ivAtaque ivDefensa ivStamina\n" +
-                    "\uD83D\uDD30 Mejor puesto **liga** Pokemon\n" +
+                    "\uD83D\uDD30 Mejor IV **liga** Pokemon\n" +
                     "\n" +
                     "Se irán actualizando");
             isMessage = true;
@@ -537,7 +537,7 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
-        else if(recogWord.toLowerCase().contains("mejor puesto") && (recogWord.toLowerCase().contains("super") || recogWord.toLowerCase().contains("súper") || recogWord.toLowerCase().contains("ultra") || recogWord.toLowerCase().contains("master"))){
+        else if(recogWord.toLowerCase().contains("mejor iv") && (recogWord.toLowerCase().contains("super") || recogWord.toLowerCase().contains("súper") || recogWord.toLowerCase().contains("ultra") || recogWord.toLowerCase().contains("master"))){
             String mensaje = update.getMessage().getText();
             int ind1 = mensaje.indexOf(' ');
             int ind2 = mensaje.indexOf(' ', ind1 + 1);
