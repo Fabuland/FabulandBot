@@ -488,21 +488,23 @@ public class FabuBot extends TelegramLongPollingBot {
 
             String num1text = mensaje.substring(ind1, ind2).trim().toLowerCase();
             String num2text = mensaje.substring(ind3).trim().toLowerCase();
-            int num1= 0, num2 = 0;
+            int num1, num2;
             if (isNumeric(num1text) && (isNumeric(num2text))) {
                 num1 = Integer.parseInt(num1text);
                 num2 = Integer.parseInt(num2text);
+                int resultado = num1*num2;
+                if(num2 == 5){
+                    message.setText("Por el culo te la hinco");
+                }else{
+                    message.setText(resultado+"");
+                }
             }else{
                 message.setText("Introduce 2 números, por favor");
             }
 
-            int resultado = num1*num2;
 
-            if(num2 == 5){
-                message.setText("Por el culo te la hinco");
-            }else{
-                message.setText(resultado+"");
-            }
+
+
             isMessage = true;
 
         }
