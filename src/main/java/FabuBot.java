@@ -480,6 +480,34 @@ public class FabuBot extends TelegramLongPollingBot {
 
         }
 
+        else if(recogWord.toLowerCase().contains("multiplica:") && recogWord.toLowerCase().contains("x")){
+            String mensaje = update.getMessage().getText();
+            int ind1 = mensaje.indexOf(' ');
+            int ind2 = mensaje.indexOf(' ', ind1 + 1);
+            int ind3 = mensaje.indexOf(' ', ind2 + 1);
+            int ind4 = mensaje.indexOf(' ', ind3 + 1);
+
+            String num1text = mensaje.substring(ind1, ind2).trim().toLowerCase();
+            String num2text = mensaje.substring(ind3, ind4).trim().toLowerCase();
+            int num1= 0, num2 = 0;
+            if (isNumeric(num1text) && (isNumeric(num2text))) {
+                num1 = Integer.parseInt(num1text);
+                num2 = Integer.parseInt(num2text);
+            }else{
+                message.setText("Introduce 2 números, por favor");
+            }
+
+            int resultado = num1*num2;
+
+            if(num2 == 5){
+                message.setText("Por el culo te la hinco");
+            }else{
+                message.setText(resultado+"");
+            }
+            isMessage = true;
+
+        }
+
         else if(recogWord.toLowerCase().contains("simular") && recogWord.toLowerCase().contains("vs")){
             String mensaje = update.getMessage().getText();
             int ind1 = mensaje.indexOf(' ');
@@ -970,7 +998,14 @@ public class FabuBot extends TelegramLongPollingBot {
 
     }
 
-
+    public static boolean isNumeric(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch(NumberFormatException e){
+            return false;
+        }
+    }
 
     public String reader(String archivo){
 
