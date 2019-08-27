@@ -241,7 +241,8 @@ public class FabuBot extends TelegramLongPollingBot {
                             "\uD83D\uDD30 Hola Fabubot!\n" +
                             "\uD83D\uDD30 uwu\n" +
                             "\uD83D\uDD30 FabuHora\n" +
-                            "\uD83D\uDD30 FabuPole (a partir de las 7:00 y 16:00)");
+                            "\uD83D\uDD30 FabuPole (a partir de las 7:00 y 16:00)\n" +
+                            "\uD83D\uDD30 Multiplica: 3 x 2");
             isMessage = true;
         }
 
@@ -817,6 +818,11 @@ public class FabuBot extends TelegramLongPollingBot {
 
 
         }*/
+
+        else if(recogWord.toLowerCase().contains("pole")){
+            message.setText("Nachos con guacamole");
+            isMessage = true;
+        }
 
         else if(recogWord.toLowerCase().contains("probar variables")){
 
