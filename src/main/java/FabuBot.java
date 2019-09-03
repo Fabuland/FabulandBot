@@ -540,7 +540,7 @@ public class FabuBot extends TelegramLongPollingBot {
         }
 
         else if(recogWord.toLowerCase().contains("rank") && (recogWord.toLowerCase().contains("super") || recogWord.toLowerCase().contains("súper") || recogWord.toLowerCase().contains("ultra") || recogWord.toLowerCase().contains("master"))){
-            String mensaje = update.getMessage().getText();
+           /* String mensaje = update.getMessage().getText();
             int ind1 = mensaje.indexOf(' ');
             int ind2 = mensaje.indexOf(' ', ind1 + 1);
             int ind3 = mensaje.indexOf(' ', ind2 + 1);
@@ -572,14 +572,14 @@ public class FabuBot extends TelegramLongPollingBot {
                 System.out.println(rangoPoke);
             } catch (IOException e) {
                 e.printStackTrace();
-            }
-            message.setText("⚔ Puesto "+ rangoPoke +" ⚔");
+            }*/
+            message.setText("⚔ RIP Rankings ⚔");
             isMessage = true;
 
         }
 
         else if(recogWord.toLowerCase().contains("mejor iv") && (recogWord.toLowerCase().contains("super") || recogWord.toLowerCase().contains("súper") || recogWord.toLowerCase().contains("ultra") || recogWord.toLowerCase().contains("master"))){
-            String mensaje = update.getMessage().getText();
+           /* String mensaje = update.getMessage().getText();
             int ind1 = mensaje.indexOf(' ');
             int ind2 = mensaje.indexOf(' ', ind1 + 1);
             int ind3 = mensaje.indexOf(' ', ind2 + 1);
@@ -607,8 +607,8 @@ public class FabuBot extends TelegramLongPollingBot {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            String[] rangoArray = rangoPoke.split(" ");
-            message.setText("⚔ " + rangoArray[15] + "/" + rangoArray[17] + "/" + rangoArray[19] + " ⚔");
+            String[] rangoArray = rangoPoke.split(" ");*/
+            message.setText("⚔ RIP Rankings ⚔");
             isMessage = true;
 
         }
